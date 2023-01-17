@@ -2,4 +2,4 @@ import { setupCounter, helloWorld } from "./helpers/counter";
 
 helloWorld();
 
-setupCounter(document.querySelector("#counter"));
+// setupCounter(document.querySelector("#counter"));

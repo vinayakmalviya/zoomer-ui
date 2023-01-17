@@ -1,0 +1,44 @@
+:root {
+  /* colors */
+  /* 1. main colors */
+  --primary-color: "#3B82F6";
+  --secondary-color: "#14B8A6";
+
+  /* 2. bg colors */
+  --primary-bg: "#E2E8F0";
+  --active-bg: "#CCFBF1";
+
+  /* 3. typography colors */
+  --text-primary: "#334155";
+  --text-light: "#475569";
+
+  /* fonts */
+  --font-family: "Space Grotesk", sans-serif;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-bold: 700;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-smooth: always;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  font-family: var(--font-family);
+}
+
+::selection {
+  background: rgba(0, 0, 0, 0.14);
+}
+
+::-moz-selection {
+  background: rgba(0, 0, 0, 0.14);
+}
