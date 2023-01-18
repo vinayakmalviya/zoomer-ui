@@ -1,0 +1,191 @@
+nav {
+  padding: 2rem 2.625rem;
+  transition: all 0.3s ease-in-out;
+  border-bottom: 0.063rem solid var(--primary-bg);
+}
+
+.logo {
+  font-family: var(--font-family);
+  font-weight: var(--font-bold);
+  font-size: 1.5rem;
+  color: var(--zoom-color);
+  margin: 0;
+}
+
+.logo span {
+  color: var(--text-primary);
+  margin: 0;
+}
+
+main {
+  min-height: 100%;
+}
+
+/* boxes, containers */
+
+.container {
+  max-width: 1024px;
+  width: 100%;
+  margin: 0px auto;
+}
+
+.room {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  background-color: var(--primary-bg);
+  border-radius: var(--border-radius);
+}
+
+.room-details {
+  flex: 2;
+}
+
+.room-details h1 {
+  font-family: var(--font-family);
+  font-weight: var(--font-bold);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+}
+
+.room-id {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+  color: var(--text-light);
+}
+
+.room-id h4 {
+  font-family: var(--font-family);
+  font-weight: var(--font-regular);
+  font-size: 1rem;
+  color: var(--text-light);
+}
+
+.room-id p {
+  margin-top: -0.5rem;
+}
+
+.room-id span {
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.room-id span:hover {
+  font-weight: var(--font-bold);
+}
+
+.room-metadata {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  color: var(--text-primary);
+}
+
+.room-metadata p {
+  font-size: 1rem;
+}
+
+.room-metadata span {
+  font-size: 1rem;
+}
+
+.room-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  color: var(--text-primary);
+}
+
+.room-status p {
+  font-size: 1rem;
+  font-weight: var(--font-regular);
+}
+
+.room-status h4 {
+  font-weight: var(--font-bold);
+}
+
+.room-actions {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.room-actions button {
+  max-width: 8.875rem;
+  width: 100%;
+}
+
+.active-room {
+  background-color: var(--active-bg);
+  border: 1.6px solid var(--secondary-color);
+}
+
+/* typography */
+
+.title {
+  font-family: var(--font-family);
+  font-weight: var(--font-medium);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+}
+
+/* buttons */
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--border-radius);
+  color: white;
+  background-color: var(--primary-color);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: var(--font-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  min-height: 2rem;
+  text-align: center;
+}
+
+button span.material-symbols-rounded {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: var(--font-medium);
+  text-align: center;
+}
+
+button:hover {
+  /* box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); */
+  filter: brightness(1.1);
+}
+
+.secondary-button {
+  background-color: var(--secondary-color);
+}
+
+.alert-button {
+  background-color: #f87171;
+}
+
+/* custom stuff */
+
+main .container {
+  margin-top: 1.5rem;
+  padding: 0rem 1rem;
+}
+
+.active-rooms {
+  margin-top: 1rem;
+}

@@ -17,6 +17,10 @@
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
+    />
     <link rel="stylesheet" href="/css/reset.css" type="text/css" />
     <link rel="stylesheet" href="/css/defaults.css" type="text/css" />
     <link rel="stylesheet" href="/css/index.css" type="text/css" />
@@ -25,12 +29,70 @@
 
   <body>
     <nav>
-      <div>
-        <h1>ZOOMER</h1>
-      </div>
+      <p class="logo">ZOOM<span>ER</span></p>
     </nav>
     <main>
-      <p>Content goes here</p>
+      <div class="container">
+        <h1 class="title">Rooms in use</h1>
+        <section class="active-rooms">
+          <div class="room">
+            <div class="room-details">
+              <h1>Zoom room 1</h1>
+              <div class="room-id">
+                <h4>643 185 1015</h4>
+                <p>.</p>
+                <span class="material-symbols-rounded">content_copy</span>
+              </div>
+              <div class="room-metadata">
+                <span class="material-symbols-rounded">group</span>
+                <p>100</p>
+                <span class="material-symbols-rounded">timer</span>
+                <p>40 mins</p>
+              </div>
+              <div class="room-status">
+                <p>Unoccupied</p>
+              </div>
+            </div>
+            <div class="room-actions">
+              <button class="secondary-button">
+                Join<span class="material-symbols-rounded">open_in_new</span>
+              </button>
+              <button>
+                Occupy <span class="material-symbols-rounded">group_add</span>
+              </button>
+            </div>
+          </div>
+          <div class="room active-room" style="margin-top: 16px">
+            <div class="room-details">
+              <h1>Vinayak's zoom room</h1>
+              <div class="room-id">
+                <h4>643 185 1015</h4>
+                <p>.</p>
+                <span class="material-symbols-rounded">content_copy</span>
+              </div>
+              <div class="room-metadata">
+                <span class="material-symbols-rounded">group</span>
+                <p>100</p>
+                <span class="material-symbols-rounded">timer</span>
+                <p>40 mins</p>
+              </div>
+              <div class="room-status">
+                <p>Occupied until:</p>
+                <h4>12:00PM IST</h4>
+              </div>
+            </div>
+            <div class="room-actions">
+              <button class="secondary-button">
+                Join<span class="material-symbols-rounded">open_in_new</span>
+              </button>
+              <button class="alert-button">
+                Free up
+                <span class="material-symbols-rounded">exit_to_app</span>
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
     <script type="module" src="/js/index.js"></script>
   </body>
