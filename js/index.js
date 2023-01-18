@@ -1,5 +1,8 @@
-import { setupCounter, helloWorld } from "./helpers/counter";
+import { setupModal, openModal } from "./helpers/modalHandler";
 
-helloWorld();
+// Setting up modals
+setupModal("add-room-modal");
 
-// setupCounter(document.querySelector("#counter"));
+document.getElementById("test-modal").addEventListener("click", (e) => {
+  openModal(e.target, "add-room-modal");
+});
