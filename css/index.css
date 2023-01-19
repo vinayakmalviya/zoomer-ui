@@ -1,8 +1,12 @@
+/* navbar */
+
 nav {
   padding: 2rem 2.625rem;
   transition: all 0.3s ease-in-out;
   border-bottom: 0.063rem solid var(--primary-bg);
 }
+
+/* logo */
 
 .logo {
   font-family: var(--font-family);
@@ -15,10 +19,6 @@ nav {
 .logo span {
   color: var(--text-primary);
   margin: 0;
-}
-
-main {
-  min-height: 100%;
 }
 
 /* boxes, containers */
@@ -207,7 +207,6 @@ button.icon-button:hover {
   z-index: 10;
   overflow: auto;
   padding: 1rem;
-  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -223,6 +222,7 @@ button.icon-button:hover {
   width: 100%;
   max-width: 42.75rem;
   color: var(--text-primary);
+  animation: fade-in 0.2s;
 }
 
 .modal-container h1 {
@@ -243,6 +243,36 @@ button.icon-button:hover {
   max-height: calc(100vh - 10rem);
   height: 100%;
   overflow: auto;
+}
+
+.modal-visible {
+  display: flex;
+  animation: fade-in 0.2s ease-in;
+}
+
+.modal-hidden {
+  display: none;
+  animation: fade-out 0.2s ease-out;
+}
+
+/* animations */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 /* custom stuff */

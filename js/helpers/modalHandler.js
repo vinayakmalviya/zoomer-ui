@@ -1,4 +1,4 @@
-let lastActiveElement = document.activeElement;
+let lastActiveElement = null;
 
 const openModal = (lastPressingElement, modalId) => {
   const modalNode = document.getElementById(modalId);
@@ -6,16 +6,18 @@ const openModal = (lastPressingElement, modalId) => {
 
   lastActiveElement = lastPressingElement;
 
-  modalNode.style.display = "flex";
+  modalNode.classList.replace("modal-hidden", "modal-visible");
   modalCloseButton.focus();
 };
 
 const closeModal = (modalId) => {
   const modalNode = document.getElementById(modalId);
 
-  modalNode.style.display = "none";
+  modalNode.classList.replace("modal-visible", "modal-hidden");
 
-  lastActiveElement.focus();
+  if (lastActiveElement) {
+    lastActiveElement.focus();
+  }
 };
 
 const setupModal = (modalId) => {
