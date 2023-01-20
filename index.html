@@ -101,7 +101,38 @@
             </button>
             <h1>Modal Title</h1>
             <div class="modal-content">
-              <p>Rest of the content goes here</p>
+              <div class="textinput">
+                <label for="roomName">Label</label>
+                <input id="roomName" type="text" placeholder="Placeholder" />
+                <p>Caption</p>
+              </div>
+              <div class="dropdown">
+                <label for="dropdown-test">Label</label>
+                <select id="dropdown-test">
+                  <option value="1" disabled selected>Select option</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                </select>
+                <p>Caption</p>
+              </div>
+              <div class="checkbox">
+                <label for="checkbox-test">Label</label>
+                <input id="checkbox-test" type="checkbox" />
+              </div>
+              <div class="radiobuttons">
+                <label for="radio-test">Label</label>
+                <input id="radio-test" type="radio" />
+              </div>
+              <div class="textinput-large">
+                <label for="comments">Label</label>
+                <textarea
+                  id="comments"
+                  type="text"
+                  placeholder="Placeholder"
+                ></textarea>
+                <p>Caption</p>
+              </div>
+              <input type="submit" value="Yay it works" />
             </div>
           </div>
         </div>

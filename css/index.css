@@ -166,17 +166,12 @@ button span.material-symbols-rounded {
   text-align: center;
 }
 
-button:hover {
-  /* box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); */
-  filter: brightness(1.1);
-}
-
 .secondary-button {
   background-color: var(--secondary-color);
 }
 
 .alert-button {
-  background-color: #f87171;
+  background-color: var(--error-color);
 }
 
 button.icon-button {
@@ -193,6 +188,197 @@ button.icon-button span {
 button.icon-button:hover {
   background-color: var(--primary-bg);
   filter: unset;
+}
+
+/* form elements */
+
+label {
+  font-family: var(--font-family);
+  font-weight: var(--font-medium);
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+input:not([type="submit"]) {
+  min-height: 2.5rem;
+  max-height: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: var(--border-radius);
+  color: var(--text-primary);
+  transition: all 0.2s ease-in-out;
+  outline: 0;
+  background-color: white;
+}
+
+input:not([type="submit"])::placeholder {
+  color: #94a3b8;
+}
+
+input:not([type="submit"]):active {
+  border: 2px solid var(--primary-color);
+}
+
+input:not([type="submit"]):focus {
+  border: 2px solid var(--primary-color);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  min-height: unset;
+  max-height: unset;
+  height: unset;
+}
+
+input[type="submit"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--border-radius);
+  color: white;
+  background-color: var(--primary-color);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: var(--font-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  min-height: 2rem;
+  max-height: 2.5rem;
+  text-align: center;
+}
+
+input[type="submit"] span.material-symbols-rounded {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: var(--font-medium);
+  text-align: center;
+}
+
+input[type="submit"]:hover {
+  filter: brightness(1.1);
+}
+
+select {
+  min-height: 2.5rem;
+  max-height: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: var(--border-radius);
+  color: var(--text-primary);
+  transition: all 0.2s ease-in-out;
+  outline: 0;
+  background-color: white;
+}
+
+select::placeholder {
+  color: #94a3b8;
+}
+
+select:active {
+  border: 2px solid var(--primary-color);
+}
+
+select:focus {
+  border: 2px solid var(--primary-color);
+}
+
+textarea {
+  min-height: 5rem;
+  max-height: 5rem;
+  height: 5rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: var(--border-radius);
+  color: var(--text-primary);
+  transition: all 0.2s ease-in-out;
+  outline: 0;
+  background-color: white;
+}
+
+textarea::placeholder {
+  color: #94a3b8;
+}
+
+textarea:active {
+  border: 2px solid var(--primary-color);
+}
+
+textarea:focus {
+  border: 2px solid var(--primary-color);
+}
+
+.textinput {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.textinput p {
+  font-family: var(--font-family);
+  font-weight: var(--font-regular);
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dropdown p {
+  font-family: var(--font-family);
+  font-weight: var(--font-regular);
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.radiobuttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.textinput-large {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.textinput-large p {
+  font-family: var(--font-family);
+  font-weight: var(--font-regular);
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+
+.error input {
+  border: 2px solid var(--error-color);
+}
+
+.error select {
+  border: 2px solid var(--error-color);
+}
+
+.error p {
+  color: var(--error-color);
+}
+
+.error-asterisk {
+  color: var(--error-color);
 }
 
 /* modals */
@@ -223,6 +409,7 @@ button.icon-button:hover {
   max-width: 42.75rem;
   color: var(--text-primary);
   animation: fade-in 0.2s;
+  overflow: auto;
 }
 
 .modal-container h1 {
@@ -241,8 +428,9 @@ button.icon-button:hover {
 .modal-content {
   margin-top: 0.75rem;
   max-height: calc(100vh - 10rem);
-  height: 100%;
-  overflow: auto;
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+  gap: 1rem; */
 }
 
 .modal-visible {
