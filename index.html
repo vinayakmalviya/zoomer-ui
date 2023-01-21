@@ -35,63 +35,7 @@
       <div class="container">
         <h1 class="title">Rooms in use</h1>
         <section class="active-rooms">
-          <div class="room">
-            <div class="room-details">
-              <h1>Zoom room 1</h1>
-              <div class="room-id">
-                <h4>643 185 1015</h4>
-                <p>.</p>
-                <span class="material-symbols-rounded">content_copy</span>
-              </div>
-              <div class="room-metadata">
-                <span class="material-symbols-rounded">group</span>
-                <p>100</p>
-                <span class="material-symbols-rounded">timer</span>
-                <p>40 mins</p>
-              </div>
-              <div class="room-status">
-                <p>Unoccupied</p>
-              </div>
-            </div>
-            <div class="room-actions">
-              <button class="secondary-button" id="test-modal">
-                Join<span class="material-symbols-rounded">open_in_new</span>
-              </button>
-              <button>
-                Occupy <span class="material-symbols-rounded">group_add</span>
-              </button>
-            </div>
-          </div>
-          <div class="room active-room" style="margin-top: 16px">
-            <div class="room-details">
-              <h1>Vinayak's zoom room</h1>
-              <div class="room-id">
-                <h4>643 185 1015</h4>
-                <p>.</p>
-                <span class="material-symbols-rounded">content_copy</span>
-              </div>
-              <div class="room-metadata">
-                <span class="material-symbols-rounded">group</span>
-                <p>100</p>
-                <span class="material-symbols-rounded">timer</span>
-                <p>40 mins</p>
-              </div>
-              <div class="room-status">
-                <p>Occupied until:</p>
-                <h4>12:00PM IST</h4>
-              </div>
-            </div>
-            <div class="room-actions">
-              <button class="secondary-button">
-                Join<span class="material-symbols-rounded">open_in_new</span>
-              </button>
-              <button class="alert-button">
-                Free up
-                <span class="material-symbols-rounded">exit_to_app</span>
-              </button>
-            </div>
-          </div>
-          <div class="room active-room" style="margin-top: 16px">
+          <div class="room active-room">
             <div class="room-details">
               <h1>Vinayak's zoom room</h1>
               <div class="room-id">
@@ -121,60 +65,323 @@
             </div>
           </div>
         </section>
-      </div>
-      <section>
-        <div id="add-room-modal" class="modal modal-hidden">
-          <div class="modal-container">
-            <button class="icon-button modal-close">
-              <span class="material-symbols-rounded">close</span>
-            </button>
-            <h1>Modal Title</h1>
-            <div class="modal-content">
-              <div class="textinput">
-                <label for="roomName">Label</label>
-                <input id="roomName" type="text" placeholder="Placeholder" />
-                <p>Caption</p>
+        <h1 id="available-rooms-title" class="title">Available rooms</h1>
+        <section class="available-rooms">
+          <div class="room">
+            <div class="room-details">
+              <h1>Zoom room 1</h1>
+              <div class="room-id">
+                <h4>643 185 1015</h4>
+                <p>.</p>
+                <span class="material-symbols-rounded">content_copy</span>
               </div>
-              <div class="dropdown">
-                <label for="dropdown-test">Label</label>
-                <select id="dropdown-test">
-                  <option value="1" disabled selected>Select option</option>
-                  <option value="1">Option 1</option>
-                  <option value="2">Option 2</option>
-                </select>
-                <p>Caption</p>
+              <div class="room-metadata">
+                <span class="material-symbols-rounded">group</span>
+                <p>100</p>
+                <span class="material-symbols-rounded">timer</span>
+                <p>40 mins</p>
               </div>
-              <div class="checkbox">
-                <label for="checkbox-test">Label</label>
-                <input id="checkbox-test" type="checkbox" />
+              <div class="room-status">
+                <p>Unoccupied</p>
               </div>
-              <div class="radiobuttons">
-                <label for="radio-test">Label</label>
-                <input id="radio-test" type="radio" />
-              </div>
-              <div class="textinput-large">
-                <label for="comments">Label</label>
-                <textarea
-                  id="comments"
-                  type="text"
-                  placeholder="Placeholder"
-                ></textarea>
-                <p>Caption</p>
-              </div>
-              <input type="submit" value="Yay it works" />
+            </div>
+            <div class="room-actions">
+              <button class="secondary-button">
+                Join<span class="material-symbols-rounded">open_in_new</span>
+              </button>
+              <button id="occupy-test">
+                Occupy <span class="material-symbols-rounded">group_add</span>
+              </button>
             </div>
           </div>
+          <div class="room">
+            <div class="room-details">
+              <h1>Zoom room 2</h1>
+              <div class="room-id">
+                <h4>643 185 1015</h4>
+                <p>.</p>
+                <span class="material-symbols-rounded">content_copy</span>
+              </div>
+              <div class="room-metadata">
+                <span class="material-symbols-rounded">group</span>
+                <p>100</p>
+                <span class="material-symbols-rounded">timer</span>
+                <p>40 mins</p>
+              </div>
+              <div class="room-status">
+                <p>Unoccupied</p>
+              </div>
+            </div>
+            <div class="room-actions">
+              <button class="secondary-button">
+                Join<span class="material-symbols-rounded">open_in_new</span>
+              </button>
+              <button>
+                Occupy <span class="material-symbols-rounded">group_add</span>
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div id="occupy-room-modal" class="modal modal-hidden">
+        <div class="modal-container">
+          <button class="icon-button modal-close">
+            <span class="material-symbols-rounded">close</span>
+          </button>
+          <h1 class="modal-title">Occupying room</h1>
+          <div class="modal-content">
+            <h4 class="subtitle">Selected room</h4>
+            <div class="occupying-room-details">
+              <h1>Zoom room 1</h1>
+              <h4>643 185 1015</h4>
+              <a href="#"
+                >https://abcd.room/j/8858615628?pwd=SDRydlBxMU9VcmZmNHhQTUN4R1U...</a
+              >
+              <div class="room-metadata">
+                <span class="material-symbols-rounded">group</span>
+                <p>100</p>
+                <span class="material-symbols-rounded">timer</span>
+                <p>40 mins</p>
+              </div>
+            </div>
+            <form>
+              <div class="textinput">
+                <label for="meetingTitle">Meeting title</label>
+                <input
+                  type="text"
+                  id="meetingTitle"
+                  name="meetingTitle"
+                  placeholder="Eg. Daily standup"
+                />
+                <p>Will be shown to users</p>
+              </div>
+              <div class="textinput">
+                <label for="occupiedUntil">Occupied until</label>
+                <input
+                  type="time"
+                  id="occupiedUntil"
+                  name="occupiedUntil"
+                  placeholder="Eg. Select the time"
+                />
+                <p>Time till room will be occupied</p>
+              </div>
+              <div class="textinput-large">
+                <label for="occupiedComments">Comments</label>
+                <textarea
+                  type="text"
+                  id="occupiedComments"
+                  name="occupiedComments"
+                  placeholder="Words, sentences"
+                ></textarea>
+                <p>Additional info for users</p>
+              </div>
+              <button type="submit">
+                Occupy room<span class="material-symbols-rounded"
+                  >check_circle</span
+                >
+              </button>
+            </form>
+          </div>
         </div>
-      </section>
+      </div>
+      <div id="add-room-modal" class="modal modal-hidden">
+        <div class="modal-container">
+          <button class="icon-button modal-close">
+            <span class="material-symbols-rounded">close</span>
+          </button>
+          <h1 class="modal-title">Adding a room</h1>
+          <div class="modal-content">
+            <form>
+              <div class="textinput">
+                <label for="roomName">Room name</label>
+                <input
+                  id="roomName"
+                  name="roomName"
+                  type="text"
+                  placeholder="Eg. Abc's Zoom Room"
+                />
+                <p>Will be shown on list</p>
+              </div>
+              <div class="textinput">
+                <label for="roomId">Room ID</label>
+                <input
+                  id="roomId"
+                  name="roomId"
+                  type="text"
+                  placeholder="Eg. 123 456 7890"
+                />
+                <p>Unique ID for the room</p>
+              </div>
+              <div class="textinput">
+                <label for="roomLink">Room link</label>
+                <input
+                  id="roomLink"
+                  name="roomLink"
+                  type="url"
+                  placeholder="Eg. Really an example for this?"
+                />
+                <p>Use https links only</p>
+              </div>
+              <div class="textinput">
+                <label for="roomPassword">Room password</label>
+                <input
+                  id="roomPassword"
+                  name="roomPassword"
+                  type="password"
+                  placeholder="Eg. Again an example?"
+                />
+                <p>Will be hashed</p>
+              </div>
+              <div class="textinput">
+                <label for="roomCapacity">Room capacity</label>
+                <input
+                  id="roomCapacity"
+                  name="roomCapacity"
+                  type="number"
+                  placeholder="Eg. 100"
+                />
+                <p>Just for reference</p>
+              </div>
+              <div class="textinput">
+                <label for="timeLimit">Time limit</label>
+                <input
+                  id="timeLimit"
+                  name="timeLimit"
+                  type="number"
+                  placeholder="Eg. 40"
+                />
+                <p>Room's time limit in minutes</p>
+              </div>
+              <div class="textinput-large">
+                <label for="comments">Comments</label>
+                <textarea
+                  id="comments"
+                  name="comments"
+                  type="text"
+                  placeholder="Words, sentences"
+                ></textarea>
+                <p>Additional info for users</p>
+              </div>
+              <button class="secondary-button" type="submit">
+                Add room<span class="material-symbols-rounded">add</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div id="edit-room-modal" class="modal modal-hidden">
+        <div class="modal-container">
+          <button class="icon-button modal-close">
+            <span class="material-symbols-rounded">close</span>
+          </button>
+          <h1 class="modal-title">Editing room details</h1>
+          <div class="modal-content">
+            <h4 class="subtitle">Select a room</h4>
+            <form>
+              <div class="dropdown">
+                <label for="selectedRoom">Room list</label>
+                <select
+                  id="selectedRoom"
+                  name="selectedRoom"
+                  type="text"
+                  placeholder="Eg. Abc's Zoom Room"
+                >
+                  <option value="none" disabled selected>Select room</option>
+                  <option value="1">Zoom room 1</option>
+                  <option value="2">Zoom room 2</option>
+                </select>
+                <p>Room you wish to edit</p>
+              </div>
+              <div class="textinput">
+                <label for="editRoomName">Room name</label>
+                <input
+                  id="editRoomName"
+                  name="editRoomName"
+                  type="text"
+                  placeholder="Eg. Abc's Zoom Room"
+                />
+                <p>Will be shown on list</p>
+              </div>
+              <div class="textinput">
+                <label for="editRoomId">Room ID</label>
+                <input
+                  id="editRoomId"
+                  name="editRoomId"
+                  type="text"
+                  placeholder="Eg. 123 456 7890"
+                />
+                <p>Unique ID for the room</p>
+              </div>
+              <div class="textinput">
+                <label for="editRoomLink">Room link</label>
+                <input
+                  id="editRoomLink"
+                  name="editRoomLink"
+                  type="url"
+                  placeholder="Eg. Really an example for this?"
+                />
+                <p>Use https links only</p>
+              </div>
+              <div class="textinput">
+                <label for="editRoomPassword">Room password</label>
+                <input
+                  id="editRoomPassword"
+                  name="editRoomPassword"
+                  type="password"
+                  placeholder="Eg. Again an example?"
+                />
+                <p>Will be hashed</p>
+              </div>
+              <div class="textinput">
+                <label for="editRoomCapacity">Room capacity</label>
+                <input
+                  id="editRoomCapacity"
+                  name="editRoomCapacity"
+                  type="number"
+                  placeholder="Eg. 100"
+                />
+                <p>Just for reference</p>
+              </div>
+              <div class="textinput">
+                <label for="editTimeLimit">Time limit</label>
+                <input
+                  id="editTimeLimit"
+                  name="editTimeLimit"
+                  type="number"
+                  placeholder="Eg. 40"
+                />
+                <p>Room's time limit in minutes</p>
+              </div>
+              <div class="textinput-large">
+                <label for="editComments">Comments</label>
+                <textarea
+                  id="editComments"
+                  name="editComments"
+                  type="text"
+                  placeholder="Words, sentences"
+                ></textarea>
+                <p>Additional info for users</p>
+              </div>
+              <button class="secondary-button" type="submit">
+                Done<span class="material-symbols-rounded">check</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
       <div id="main-fab" class="fab fab-hidden">
         <div class="fab-items">
           <div class="fab-item">
             <p>Edit room</p>
-            <button><span class="material-symbols-rounded">edit</span></button>
+            <button id="edit-room-button">
+              <span class="material-symbols-rounded">edit</span>
+            </button>
           </div>
           <div class="fab-item">
             <p>Add room</p>
-            <button><span class="material-symbols-rounded">add</span></button>
+            <button id="add-room-button">
+              <span class="material-symbols-rounded">add</span>
+            </button>
           </div>
         </div>
         <button class="fab-button">
