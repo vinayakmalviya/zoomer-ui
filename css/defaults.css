@@ -40,6 +40,7 @@ body {
   text-rendering: optimizeLegibility;
   font-family: var(--font-family);
   min-height: 100vh;
+  background-color: white;
 }
 
 main {
