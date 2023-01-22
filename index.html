@@ -32,7 +32,7 @@
       <p class="logo">ZOOM<span>ER</span></p>
     </nav>
     <main>
-      <div class="container">
+      <div id="main-content" class="container hidden">
         <h1 class="title">Rooms in use</h1>
         <section class="active-rooms">
           <div class="room active-room">
@@ -122,6 +122,33 @@
             </div>
           </div>
         </section>
+        <div id="main-fab" class="fab fab-hidden">
+          <div class="fab-items">
+            <div class="fab-item">
+              <p>Edit room</p>
+              <button id="edit-room-button">
+                <span class="material-symbols-rounded">edit</span>
+              </button>
+            </div>
+            <div class="fab-item">
+              <p>Add room</p>
+              <button id="add-room-button">
+                <span class="material-symbols-rounded">add</span>
+              </button>
+            </div>
+          </div>
+          <button class="fab-button">
+            <span class="material-symbols-rounded">magic_button</span>
+          </button>
+        </div>
+      </div>
+      <div id="main-loader" class="visible loader">
+        <div class="pong">
+          <div></div>
+          <div></div>
+          <div></div>
+          <p>Loading rooms</p>
+        </div>
       </div>
       <div id="occupy-room-modal" class="modal modal-hidden">
         <div class="modal-container">
@@ -393,25 +420,6 @@
             </form>
           </div>
         </div>
-      </div>
-      <div id="main-fab" class="fab fab-hidden">
-        <div class="fab-items">
-          <div class="fab-item">
-            <p>Edit room</p>
-            <button id="edit-room-button">
-              <span class="material-symbols-rounded">edit</span>
-            </button>
-          </div>
-          <div class="fab-item">
-            <p>Add room</p>
-            <button id="add-room-button">
-              <span class="material-symbols-rounded">add</span>
-            </button>
-          </div>
-        </div>
-        <button class="fab-button">
-          <span class="material-symbols-rounded">magic_button</span>
-        </button>
       </div>
     </main>
     <script type="module" src="/js/index.js"></script>
