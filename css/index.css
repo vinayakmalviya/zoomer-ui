@@ -603,6 +603,45 @@ main .container {
   margin-top: 1rem;
 }
 
+.freeup-room-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.freeup-room-details h1 {
+  font-family: var(--font-family);
+  font-weight: var(--font-bold);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+}
+
+.freeup-room-details h4 {
+  font-family: var(--font-family);
+  font-weight: var(--font-regular);
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.freeup-room-details p {
+  font-family: var(--font-family);
+  font-weight: var(--font-medium);
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.freeup-room-details p span {
+  font-weight: var(--font-bold);
+}
+
+.freeup-room-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+  gap: 1rem;
+  align-items: flex-end;
+  margin-top: 1rem;
+}
+
 #occupy-room-modal button[type="submit"] {
   max-height: 2.5rem;
   align-self: flex-end;

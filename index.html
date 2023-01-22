@@ -58,7 +58,7 @@
               <button class="secondary-button">
                 Join<span class="material-symbols-rounded">open_in_new</span>
               </button>
-              <button class="alert-button">
+              <button id="freeup-test" class="alert-button">
                 Free up
                 <span class="material-symbols-rounded">exit_to_app</span>
               </button>
@@ -181,6 +181,31 @@
                 >
               </button>
             </form>
+          </div>
+        </div>
+      </div>
+      <div id="freeup-room-modal" class="modal modal-hidden">
+        <div class="modal-container">
+          <button class="icon-button modal-close">
+            <span class="material-symbols-rounded">close</span>
+          </button>
+          <h1 class="modal-title">Freeing up room</h1>
+          <div class="modal-content">
+            <h4 class="subtitle">Selected room</h4>
+            <div class="freeup-room-details">
+              <h1>Zoom room 1</h1>
+              <h4>643 185 1015</h4>
+              <p>Current meeting: <span>BMRN Morning Stand up</span></p>
+              <p>Occupied until: <span>10:30AM</span></p>
+            </div>
+            <div class="freeup-room-actions">
+              <button id="cancel-freeup-button">
+                Cancel<span class="material-symbols-rounded">close</span>
+              </button>
+              <button class="alert-button">
+                Free up<span class="material-symbols-rounded">exit_to_app</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
