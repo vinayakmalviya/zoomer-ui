@@ -27,4 +27,4 @@ document.getElementById("edit-room-button").addEventListener("click", (e) => {
 
 setTimeout(() => {
   finishPageLoading();
-}, 5000);
+}, 500);

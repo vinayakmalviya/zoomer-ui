@@ -883,6 +883,47 @@ main .container {
   bottom: 2rem;
 }
 
+.active-empty-section {
+  margin: 2rem 0rem;
+}
+
+.active-empty-section img {
+  max-width: 100%;
+  width: 100%;
+  max-height: 12.5rem;
+  object-fit: contain;
+}
+
+.active-empty-section p {
+  font-family: var(--font-family);
+  font-weight: var(--font-medium);
+  font-size: 1.125rem;
+  color: var(--text-primary);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.available-empty-section {
+  margin: 2rem 0rem;
+  padding: 1rem;
+}
+
+.available-empty-section img {
+  max-width: 100%;
+  width: 100%;
+  max-height: 12.5rem;
+  object-fit: contain;
+}
+
+.available-empty-section p {
+  font-family: var(--font-family);
+  font-weight: var(--font-medium);
+  font-size: 1.125rem;
+  color: var(--text-primary);
+  text-align: center;
+  margin-top: 1rem;
+}
+
 .occupying-room-details {
   margin-top: 0.5rem;
 }
@@ -994,5 +1035,10 @@ main .container {
 @media screen and (max-width: 768px) {
   #edit-room-modal form .dropdown {
     grid-column: span 1;
+  }
+
+  #main-fab {
+    right: 1rem;
+    bottom: 1rem;
   }
 }
