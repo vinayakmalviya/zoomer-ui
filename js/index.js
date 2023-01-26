@@ -1,4 +1,4 @@
-import { setupModal, openModal, closeModal } from "./helpers/modalHandler";
+import { setupModal, openModal } from "./helpers/modalHandler";
 import { setupFab } from "./helpers/fabHandler";
 import { finishPageLoading } from "./helpers/loadingHandler";
 
@@ -10,12 +10,6 @@ setupModal("occupy-room-modal");
 setupModal("freeup-room-modal");
 setupModal("add-room-modal");
 setupModal("edit-room-modal");
-
-document
-  .getElementById("cancel-freeup-button")
-  .addEventListener("click", () => {
-    closeModal("freeup-room-modal");
-  });
 
 // Setting up fab
 setupFab("main-fab");
@@ -69,6 +63,7 @@ const occupancies = [
   {
     id: 1,
     occupied_until: "12:45PM IST",
+    meetingTitle: "Daily standup call",
   },
 ];
 
@@ -92,17 +87,18 @@ const activeRoomsSection = document.getElementById("active-rooms");
 const activeRoomsFragment = document.createDocumentFragment();
 
 activeRooms.forEach((room) => {
-  const occupiedUntil = occupancies.filter((o) => o.id === room.id)[0]
-    .occupied_until;
+  const roomOccupancyDetails = occupancies.filter((o) => o.id === room.id)[0];
 
   activeRoomsFragment.appendChild(
     generateActiveRoom(
+      room.id,
       room.name,
       room.room_id,
       room.capacity,
       room.time_limit,
       room.link,
-      occupiedUntil
+      roomOccupancyDetails.occupied_until,
+      roomOccupancyDetails.meetingTitle
     )
   );
 });
@@ -128,4 +124,4 @@ availableRoomsSection.appendChild(availableRoomsFragment);
 
 setTimeout(() => {
   finishPageLoading();
-}, 500);
+}, 2000);

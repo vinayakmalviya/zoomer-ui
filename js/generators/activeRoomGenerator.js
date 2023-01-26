@@ -1,14 +1,17 @@
 import generateIcon from "./iconGenerator";
 import generateDiv from "./divGenerator";
+import populateFreeupRoomModal from "./modalGenerator";
 import { openModal } from "../helpers/modalHandler";
 
 const generateActiveRoom = (
-  name,
   id,
+  name,
+  roomId,
   capacity,
   timeLimit,
   link,
-  occupiedUntil
+  occupiedUntil,
+  meetingTitle
 ) => {
   const parentDiv = generateDiv("room", "active-room");
 
@@ -21,8 +24,8 @@ const generateActiveRoom = (
   // Room id div
   const idDiv = generateDiv("room-id");
 
-  const roomId = document.createElement("h4");
-  roomId.innerHTML = id;
+  const roomIdNode = document.createElement("h4");
+  roomIdNode.innerHTML = roomId;
 
   const divider = document.createElement("p");
   divider.innerHTML = ".";
@@ -69,11 +72,12 @@ const generateActiveRoom = (
   freeUpButton.innerHTML = `Free up`;
   freeUpButton.appendChild(freeUpIcon);
   freeUpButton.addEventListener("click", (e) => {
+    populateFreeupRoomModal(id, name, roomId, occupiedUntil, meetingTitle);
     openModal(e.target, "freeup-room-modal");
   });
 
   // Appending elements
-  idDiv.appendChild(roomId);
+  idDiv.appendChild(roomIdNode);
   idDiv.appendChild(divider);
   idDiv.appendChild(copyIcon);
 

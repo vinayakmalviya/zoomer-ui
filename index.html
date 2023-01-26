@@ -34,98 +34,13 @@
     <main>
       <div id="main-content" class="container hidden">
         <h1 class="title">Rooms in use</h1>
-        <section id="active-rooms" class="active-rooms">
-          <!-- <div class="room active-room">
-            <div class="room-details">
-              <h1>Vinayak's zoom room</h1>
-              <div class="room-id">
-                <h4>643 185 1015</h4>
-                <p>.</p>
-                <span class="material-symbols-rounded">content_copy</span>
-              </div>
-              <div class="room-metadata">
-                <span class="material-symbols-rounded">group</span>
-                <p>100</p>
-                <span class="material-symbols-rounded">timer</span>
-                <p>40 mins</p>
-              </div>
-              <div class="room-status">
-                <p>Occupied until:</p>
-                <h4>12:00PM IST</h4>
-              </div>
-            </div>
-            <div class="room-actions">
-              <button class="secondary-button">
-                Join<span class="material-symbols-rounded">open_in_new</span>
-              </button>
-              <button class="alert-button">
-                Free up
-                <span class="material-symbols-rounded">exit_to_app</span>
-              </button>
-            </div>
-          </div> -->
-        </section>
+        <section id="active-rooms" class="active-rooms"></section>
         <div id="active-empty-placeholder" class="hidden active-empty-section">
           <img src="static/images/empty_illustration.svg" />
           <p>No rooms in use right now</p>
         </div>
         <h1 id="available-rooms-title" class="title">Available rooms</h1>
-        <section id="available-rooms" class="available-rooms">
-          <!-- <div class="room">
-            <div class="room-details">
-              <h1>Zoom room 1</h1>
-              <div class="room-id">
-                <h4>643 185 1015</h4>
-                <p>.</p>
-                <span class="material-symbols-rounded">content_copy</span>
-              </div>
-              <div class="room-metadata">
-                <span class="material-symbols-rounded">group</span>
-                <p>100</p>
-                <span class="material-symbols-rounded">timer</span>
-                <p>40 mins</p>
-              </div>
-              <div class="room-status">
-                <p>Unoccupied</p>
-              </div>
-            </div>
-            <div class="room-actions">
-              <button class="secondary-button">
-                Join<span class="material-symbols-rounded">open_in_new</span>
-              </button>
-              <button>
-                Occupy <span class="material-symbols-rounded">group_add</span>
-              </button>
-            </div>
-          </div>
-          <div class="room">
-            <div class="room-details">
-              <h1>Zoom room 2</h1>
-              <div class="room-id">
-                <h4>643 185 1015</h4>
-                <p>.</p>
-                <span class="material-symbols-rounded">content_copy</span>
-              </div>
-              <div class="room-metadata">
-                <span class="material-symbols-rounded">group</span>
-                <p>100</p>
-                <span class="material-symbols-rounded">timer</span>
-                <p>40 mins</p>
-              </div>
-              <div class="room-status">
-                <p>Unoccupied</p>
-              </div>
-            </div>
-            <div class="room-actions">
-              <button class="secondary-button">
-                Join<span class="material-symbols-rounded">open_in_new</span>
-              </button>
-              <button>
-                Occupy <span class="material-symbols-rounded">group_add</span>
-              </button>
-            </div>
-          </div> -->
-        </section>
+        <section id="available-rooms" class="available-rooms"></section>
         <div
           id="available-empty-placeholder"
           class="hidden available-empty-section"
@@ -230,20 +145,6 @@
           <h1 class="modal-title">Freeing up room</h1>
           <div class="modal-content">
             <h4 class="subtitle">Selected room</h4>
-            <div class="freeup-room-details">
-              <h1>Zoom room 1</h1>
-              <h4>643 185 1015</h4>
-              <p>Current meeting: <span>BMRN Morning Stand up</span></p>
-              <p>Occupied until: <span>10:30AM</span></p>
-            </div>
-            <div class="freeup-room-actions">
-              <button id="cancel-freeup-button">
-                Cancel<span class="material-symbols-rounded">close</span>
-              </button>
-              <button class="alert-button">
-                Free up<span class="material-symbols-rounded">exit_to_app</span>
-              </button>
-            </div>
           </div>
         </div>
       </div>
