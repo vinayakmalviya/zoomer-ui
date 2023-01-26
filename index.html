@@ -34,8 +34,8 @@
     <main>
       <div id="main-content" class="container hidden">
         <h1 class="title">Rooms in use</h1>
-        <section class="active-rooms">
-          <div class="room active-room">
+        <section id="active-rooms" class="active-rooms">
+          <!-- <div class="room active-room">
             <div class="room-details">
               <h1>Vinayak's zoom room</h1>
               <div class="room-id">
@@ -63,15 +63,15 @@
                 <span class="material-symbols-rounded">exit_to_app</span>
               </button>
             </div>
-          </div>
-          <div class="hidden active-empty-section">
-            <img src="static/images/empty_illustration.svg" />
-            <p>No rooms in use right now</p>
-          </div>
+          </div> -->
         </section>
+        <div id="active-empty-placeholder" class="hidden active-empty-section">
+          <img src="static/images/empty_illustration.svg" />
+          <p>No rooms in use right now</p>
+        </div>
         <h1 id="available-rooms-title" class="title">Available rooms</h1>
-        <section class="available-rooms">
-          <div class="room">
+        <section id="available-rooms" class="available-rooms">
+          <!-- <div class="room">
             <div class="room-details">
               <h1>Zoom room 1</h1>
               <div class="room-id">
@@ -124,12 +124,15 @@
                 Occupy <span class="material-symbols-rounded">group_add</span>
               </button>
             </div>
-          </div>
-          <div class="hidden available-empty-section">
-            <img src="static/images/empty_illustration_2.svg" />
-            <p>No rooms available</p>
-          </div>
+          </div> -->
         </section>
+        <div
+          id="available-empty-placeholder"
+          class="hidden available-empty-section"
+        >
+          <img src="static/images/empty_illustration_2.svg" />
+          <p>No rooms available</p>
+        </div>
         <div id="main-fab" class="fab fab-hidden">
           <div class="fab-items">
             <div class="fab-item">
