@@ -1,5 +1,4 @@
-import generateDiv from "./divGenerator";
-import generateIcon from "./iconGenerator";
+import { divGenerator, buttonGenerator } from "./elementGenerator";
 import { closeModal } from "../helpers/modalHandler";
 
 const populateFreeupRoomModal = (
@@ -23,7 +22,7 @@ const populateFreeupRoomModal = (
     modalContent.removeChild(existingActionsDiv);
   }
 
-  const detailsDiv = generateDiv("freeup-room-details");
+  const detailsDiv = divGenerator("freeup-room-details");
 
   const roomName = document.createElement("h1");
   roomName.innerHTML = name;
@@ -47,26 +46,23 @@ const populateFreeupRoomModal = (
 
   occupiedUntilNode.appendChild(occupiedUntilSpan);
 
-  const actionsDiv = generateDiv("freeup-room-actions");
+  const actionsDiv = divGenerator("freeup-room-actions");
 
-  const cancelButton = document.createElement("button");
-  const cancelIcon = generateIcon("close");
-  cancelButton.innerHTML = `Cancel`;
-  cancelButton.appendChild(cancelIcon);
+  const cancelButton = buttonGenerator("Cancel", null, "close");
   cancelButton.addEventListener("click", () => {
     closeModal("freeup-room-modal");
     modalContent.removeChild(detailsDiv);
     modalContent.removeChild(actionsDiv);
   });
 
-  const freeUpRoomButton = document.createElement("button");
-  const freeUpRoomIcon = generateIcon("exit_to_app");
-  freeUpRoomButton.classList.add("alert-button");
-  freeUpRoomButton.innerHTML = `Free up`;
-  freeUpRoomButton.appendChild(freeUpRoomIcon);
+  const freeUpRoomButton = buttonGenerator(
+    "Free up",
+    "alert-button",
+    "exit_to_app"
+  );
   freeUpRoomButton.addEventListener("click", () => {
     // TODO: Send API request to freeup room
-    console.log("Freeing up room: ", name);
+    console.log("Freeing up room: ", name, id);
 
     closeModal("freeup-room-modal");
     modalContent.removeChild(detailsDiv);

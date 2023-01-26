@@ -1,18 +1,21 @@
-import generateIcon from "./iconGenerator";
-import generateDiv from "./divGenerator";
+import {
+  buttonGenerator,
+  divGenerator,
+  iconGenerator,
+} from "./elementGenerator";
 import { openModal } from "../helpers/modalHandler";
 
 const generateAvailableRoom = (name, id, capacity, timeLimit, link) => {
-  const parentDiv = generateDiv("room");
+  const parentDiv = divGenerator("room");
 
   // Room details
-  const detailsDiv = generateDiv("room-details");
+  const detailsDiv = divGenerator("room-details");
 
   const roomName = document.createElement("h1");
   roomName.innerHTML = name;
 
   // Room id div
-  const idDiv = generateDiv("room-id");
+  const idDiv = divGenerator("room-id");
 
   const roomId = document.createElement("h4");
   roomId.innerHTML = id;
@@ -20,43 +23,36 @@ const generateAvailableRoom = (name, id, capacity, timeLimit, link) => {
   const divider = document.createElement("p");
   divider.innerHTML = ".";
 
-  const copyIcon = generateIcon("content_copy");
+  const copyIcon = iconGenerator("content_copy");
 
   // Room metadata div
-  const metadataDiv = generateDiv("room-metadata");
+  const metadataDiv = divGenerator("room-metadata");
 
-  const capacityIcon = generateIcon("group");
+  const capacityIcon = iconGenerator("group");
 
   const roomCapacity = document.createElement("p");
   roomCapacity.innerHTML = capacity;
 
-  const limitIcon = generateIcon("timer");
+  const limitIcon = iconGenerator("timer");
 
   const roomLimit = document.createElement("p");
   roomLimit.innerHTML = `${timeLimit} mins`;
 
   // Room status div
-  const statusDiv = generateDiv("room-status");
+  const statusDiv = divGenerator("room-status");
 
   const status = document.createElement("p");
   status.innerHTML = "Unoccupied";
 
   // Room actions div
-  const actionsDiv = generateDiv("room-actions");
+  const actionsDiv = divGenerator("room-actions");
 
-  const joinButton = document.createElement("button");
-  const joinIcon = generateIcon("open_in_new");
-  joinButton.classList.add("secondary-button");
-  joinButton.innerHTML = `Join`;
-  joinButton.appendChild(joinIcon);
+  const joinButton = buttonGenerator("Join", "secondary-button", "open_in_new");
   joinButton.addEventListener("click", () => {
     window.open(link);
   });
 
-  const occupyButton = document.createElement("button");
-  const occupyIcon = generateIcon("group_add");
-  occupyButton.innerHTML = `Occupy`;
-  occupyButton.appendChild(occupyIcon);
+  const occupyButton = buttonGenerator("Occupy", null, "group_add");
   occupyButton.addEventListener("click", (e) => {
     openModal(e.target, "occupy-room-modal");
   });

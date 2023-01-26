@@ -1,5 +1,8 @@
-import generateIcon from "./iconGenerator";
-import generateDiv from "./divGenerator";
+import {
+  iconGenerator,
+  divGenerator,
+  buttonGenerator,
+} from "./elementGenerator";
 import populateFreeupRoomModal from "./modalGenerator";
 import { openModal } from "../helpers/modalHandler";
 
@@ -13,16 +16,16 @@ const generateActiveRoom = (
   occupiedUntil,
   meetingTitle
 ) => {
-  const parentDiv = generateDiv("room", "active-room");
+  const parentDiv = divGenerator("room", "active-room");
 
   // Room details
-  const detailsDiv = generateDiv("room-details");
+  const detailsDiv = divGenerator("room-details");
 
   const roomName = document.createElement("h1");
   roomName.innerHTML = name;
 
   // Room id div
-  const idDiv = generateDiv("room-id");
+  const idDiv = divGenerator("room-id");
 
   const roomIdNode = document.createElement("h4");
   roomIdNode.innerHTML = roomId;
@@ -30,47 +33,43 @@ const generateActiveRoom = (
   const divider = document.createElement("p");
   divider.innerHTML = ".";
 
-  const copyIcon = generateIcon("content_copy");
+  const copyIcon = iconGenerator("content_copy");
 
   // Room metadata div
-  const metadataDiv = generateDiv("room-metadata");
+  const metadataDiv = divGenerator("room-metadata");
 
-  const capacityIcon = generateIcon("group");
+  const capacityIcon = iconGenerator("group");
 
   const roomCapacity = document.createElement("p");
   roomCapacity.innerHTML = capacity;
 
-  const limitIcon = generateIcon("timer");
+  const limitIcon = iconGenerator("timer");
 
   const roomLimit = document.createElement("p");
   roomLimit.innerHTML = `${timeLimit} mins`;
 
   // Room status div
-  const statusDiv = generateDiv("room-status");
+  const statusDiv = divGenerator("room-status");
 
   const status = document.createElement("p");
-  status.innerHTML = "Occupied unti:";
+  status.innerHTML = "Occupied until:";
 
   const occupiedUntilNode = document.createElement("h4");
   occupiedUntilNode.innerHTML = occupiedUntil;
 
   // Room actions div
-  const actionsDiv = generateDiv("room-actions");
+  const actionsDiv = divGenerator("room-actions");
 
-  const joinButton = document.createElement("button");
-  const joinIcon = generateIcon("open_in_new");
-  joinButton.classList.add("secondary-button");
-  joinButton.innerHTML = `Join`;
-  joinButton.appendChild(joinIcon);
+  const joinButton = buttonGenerator("Join", "secondary-button", "open_in_new");
   joinButton.addEventListener("click", () => {
     window.open(link);
   });
 
-  const freeUpButton = document.createElement("button");
-  const freeUpIcon = generateIcon("exit_to_app");
-  freeUpButton.classList.add("alert-button");
-  freeUpButton.innerHTML = `Free up`;
-  freeUpButton.appendChild(freeUpIcon);
+  const freeUpButton = buttonGenerator(
+    "Free up",
+    "alert-button",
+    "exit_to_app"
+  );
   freeUpButton.addEventListener("click", (e) => {
     populateFreeupRoomModal(id, name, roomId, occupiedUntil, meetingTitle);
     openModal(e.target, "freeup-room-modal");
@@ -87,6 +86,7 @@ const generateActiveRoom = (
   metadataDiv.appendChild(roomLimit);
 
   statusDiv.appendChild(status);
+  statusDiv.appendChild(occupiedUntilNode);
 
   detailsDiv.appendChild(roomName);
   detailsDiv.appendChild(idDiv);

@@ -965,6 +965,7 @@ main .container {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .freeup-room-details h1 {
