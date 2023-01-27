@@ -5,6 +5,12 @@ import { finishPageLoading } from "./helpers/loadingHandler";
 import generateActiveRoom from "./generators/activeRoomGenerator";
 import generateAvailableRoom from "./generators/availableRoomGenerator";
 
+import {
+  populateEditRoomDropdown,
+  populateEditRoomForm,
+  submitEditRoomForm,
+} from "./forms/editRoomForm";
+
 // Setting up modals
 setupModal("occupy-room-modal");
 setupModal("freeup-room-modal");
@@ -122,6 +128,34 @@ availableRooms.forEach((room) => {
 });
 
 availableRoomsSection.appendChild(availableRoomsFragment);
+
+// Setting up forms
+// 1. Edit room form
+populateEditRoomDropdown(availableRooms);
+
+document.getElementById("selectedRoom").addEventListener("change", (e) => {
+  const selectedId = e.target.value;
+
+  if (selectedId !== "none") {
+    const selectedRoomDetails = availableRooms.filter(
+      (r) => selectedId === String(r.id)
+    )[0];
+
+    populateEditRoomForm(
+      selectedId,
+      selectedRoomDetails.name,
+      selectedRoomDetails.room_id,
+      selectedRoomDetails.link,
+      selectedRoomDetails.capacity,
+      selectedRoomDetails.time_limit,
+      selectedRoomDetails.comments
+    );
+  }
+});
+
+document.getElementById("edit-room-form").addEventListener("submit", (e) => {
+  submitEditRoomForm(e);
+});
 
 setTimeout(() => {
   finishPageLoading();

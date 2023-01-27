@@ -31,9 +31,6 @@ const setupModal = (modalId) => {
   modalNode.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modalNode.style.display === "flex") {
       closeModal(modalId);
-    } else if (e.key === "Enter" || e.key === " ") {
-      // TODO: too much jank, please remove
-      e.preventDefault();
     }
   });
 };

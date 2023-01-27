@@ -142,7 +142,7 @@
           </button>
           <h1 class="modal-title">Adding a room</h1>
           <div class="modal-content">
-            <form>
+            <form id="add-room-form">
               <div class="textinput">
                 <label for="roomName">Room name</label>
                 <input
@@ -228,7 +228,8 @@
           <h1 class="modal-title">Editing room details</h1>
           <div class="modal-content">
             <h4 class="subtitle">Select a room</h4>
-            <form>
+            <form id="edit-room-form">
+              <input type="hidden" id="editId" name="editId" />
               <div class="dropdown">
                 <label for="selectedRoom">Room list</label>
                 <select
@@ -308,7 +309,6 @@
                 <textarea
                   id="editComments"
                   name="editComments"
-                  type="text"
                   placeholder="Words, sentences"
                 ></textarea>
                 <p>Additional info for users</p>
