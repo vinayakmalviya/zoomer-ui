@@ -3,7 +3,7 @@ import {
   divGenerator,
   buttonGenerator,
 } from "./elementGenerator";
-import populateFreeupRoomModal from "./modalGenerator";
+import { populateFreeupRoomModal } from "./modalGenerator";
 import { openModal } from "../helpers/modalHandler";
 
 const generateActiveRoom = (

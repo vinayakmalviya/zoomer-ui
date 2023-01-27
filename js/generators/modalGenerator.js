@@ -1,4 +1,8 @@
-import { divGenerator, buttonGenerator } from "./elementGenerator";
+import {
+  divGenerator,
+  buttonGenerator,
+  iconGenerator,
+} from "./elementGenerator";
 import { closeModal } from "../helpers/modalHandler";
 
 const populateFreeupRoomModal = (
@@ -81,4 +85,65 @@ const populateFreeupRoomModal = (
   modalContent.appendChild(actionsDiv);
 };
 
-export default populateFreeupRoomModal;
+const populateOccupyRoomModal = (
+  id,
+  name,
+  roomId,
+  link,
+  capacity,
+  timeLimit
+) => {
+  const occupyRoomModal = document.getElementById("occupy-room-modal");
+  const modalContent = occupyRoomModal.querySelector(".modal-content");
+
+  const detailsDiv = divGenerator("occupying-room-details");
+
+  const roomName = document.createElement("h1");
+  roomName.innerHTML = name;
+
+  const roomIdNode = document.createElement("h4");
+  roomIdNode.innerHTML = roomId;
+
+  const roomLink = document.createElement("a");
+  roomLink.href = link;
+  roomLink.innerHTML = link;
+  roomLink.target = "_blank";
+  roomLink.rel = "noopener noreferrer";
+
+  const metadataDiv = divGenerator("room-metadata");
+
+  const capacityIcon = iconGenerator("group");
+
+  const roomCapacity = document.createElement("p");
+  roomCapacity.innerHTML = capacity;
+
+  const limitIcon = iconGenerator("timer");
+
+  const roomLimit = document.createElement("p");
+  roomLimit.innerHTML = `${timeLimit} mins`;
+
+  metadataDiv.appendChild(capacityIcon);
+  metadataDiv.appendChild(roomCapacity);
+  metadataDiv.appendChild(limitIcon);
+  metadataDiv.appendChild(roomLimit);
+
+  detailsDiv.appendChild(roomName);
+  detailsDiv.appendChild(roomIdNode);
+  detailsDiv.appendChild(roomLink);
+  detailsDiv.appendChild(metadataDiv);
+
+  // Checking for existing div
+  const exisitingDetailsDiv = modalContent.querySelector(
+    ".occupying-room-details"
+  );
+
+  if (exisitingDetailsDiv) {
+    modalContent.replaceChild(detailsDiv, exisitingDetailsDiv);
+  } else {
+    const formElement = modalContent.querySelector("#occupy-room-form");
+
+    modalContent.insertBefore(detailsDiv, formElement);
+  }
+};
+
+export { populateFreeupRoomModal, populateOccupyRoomModal };

@@ -3,9 +3,10 @@ import {
   divGenerator,
   iconGenerator,
 } from "./elementGenerator";
+import { populateOccupyRoomModal } from "./modalGenerator";
 import { openModal } from "../helpers/modalHandler";
 
-const generateAvailableRoom = (name, id, capacity, timeLimit, link) => {
+const generateAvailableRoom = (id, name, roomId, capacity, timeLimit, link) => {
   const parentDiv = divGenerator("room");
 
   // Room details
@@ -17,8 +18,8 @@ const generateAvailableRoom = (name, id, capacity, timeLimit, link) => {
   // Room id div
   const idDiv = divGenerator("room-id");
 
-  const roomId = document.createElement("h4");
-  roomId.innerHTML = id;
+  const roomIdNode = document.createElement("h4");
+  roomIdNode.innerHTML = roomId;
 
   const divider = document.createElement("p");
   divider.innerHTML = ".";
@@ -54,11 +55,12 @@ const generateAvailableRoom = (name, id, capacity, timeLimit, link) => {
 
   const occupyButton = buttonGenerator("Occupy", null, "group_add");
   occupyButton.addEventListener("click", (e) => {
+    populateOccupyRoomModal(id, name, roomId, link, capacity, timeLimit);
     openModal(e.target, "occupy-room-modal");
   });
 
   // Appending elements
-  idDiv.appendChild(roomId);
+  idDiv.appendChild(roomIdNode);
   idDiv.appendChild(divider);
   idDiv.appendChild(copyIcon);
 

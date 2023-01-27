@@ -111,6 +111,7 @@ const availableRoomsFragment = document.createDocumentFragment();
 availableRooms.forEach((room) => {
   availableRoomsFragment.appendChild(
     generateAvailableRoom(
+      room.id,
       room.name,
       room.room_id,
       room.capacity,
