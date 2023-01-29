@@ -25,6 +25,9 @@ document.getElementById("add-room-button").addEventListener("click", (e) => {
 });
 
 document.getElementById("edit-room-button").addEventListener("click", (e) => {
+  // Clear form before opening modal
+  document.getElementById("edit-room-form").reset();
+
   openModal(e.target, "edit-room-modal");
 });
 

@@ -7,7 +7,6 @@ const displayInputError = (inputId, errorMessage = "") => {
 
   inputDiv.classList.add("error");
 
-  captionElement.dataset.caption = captionElement.innerHTML;
   captionElement.innerHTML = errorMessage;
 };
 
@@ -20,7 +19,7 @@ const resetInput = (inputId) => {
 
   inputDiv.classList.remove("error");
 
-  captionElement.innerHTML = captionElement.dataset.caption;
+  captionElement.innerHTML = inputElement.dataset.caption;
 };
 
 export { displayInputError, resetInput };

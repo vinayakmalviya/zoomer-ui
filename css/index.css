@@ -515,6 +515,37 @@ textarea:focus {
   animation: fade-out 0.2s ease-out;
 }
 
+/* snackbar */
+
+.snackbar {
+  position: absolute;
+  bottom: 2rem;
+  max-width: 15.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem;
+  background-color: var(--text-primary);
+  color: white;
+  font-family: var(--font-family);
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  z-index: 12;
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.snackbar-visible {
+  display: flex;
+  left: -16rem;
+  animation: slide-in 0.2s ease-in 0s forwards;
+}
+
+.snackbar-hidden {
+  display: none;
+  left: 2rem;
+  animation: slide-out 0.2s ease-out 0s forwards;
+}
+
 /* animations */
 
 @keyframes fade-in {
@@ -532,6 +563,28 @@ textarea:focus {
   }
   to {
     opacity: 0;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    left: -16rem;
+  }
+  to {
+    opacity: 1;
+    left: 2rem;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    opacity: 1;
+    left: 2rem;
+  }
+  to {
+    opacity: 0;
+    left: -16rem;
   }
 }
 
@@ -1041,5 +1094,35 @@ main .container {
   #main-fab {
     right: 1rem;
     bottom: 1rem;
+  }
+
+  .snackbar {
+    bottom: 1rem;
+  }
+
+  .snackbar-hidden {
+    left: 1rem;
+  }
+
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      left: -16rem;
+    }
+    to {
+      opacity: 1;
+      left: 1rem;
+    }
+  }
+
+  @keyframes slide-out {
+    from {
+      opacity: 1;
+      left: 1rem;
+    }
+    to {
+      opacity: 0;
+      left: -16rem;
+    }
   }
 }
