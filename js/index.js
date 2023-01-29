@@ -10,6 +10,7 @@ import {
   populateEditRoomForm,
   submitEditRoomForm,
 } from "./forms/editRoomForm";
+import submitAddRoomForm from "./forms/addRoomForm";
 
 // Setting up modals
 setupModal("occupy-room-modal");
@@ -21,6 +22,9 @@ setupModal("edit-room-modal");
 setupFab("main-fab");
 
 document.getElementById("add-room-button").addEventListener("click", (e) => {
+  // Clear form before opening modal
+  document.getElementById("add-room-form").reset();
+
   openModal(e.target, "add-room-modal");
 });
 
@@ -158,6 +162,10 @@ document.getElementById("selectedRoom").addEventListener("change", (e) => {
 
 document.getElementById("edit-room-form").addEventListener("submit", (e) => {
   submitEditRoomForm(e);
+});
+
+document.getElementById("add-room-form").addEventListener("submit", (e) => {
+  submitAddRoomForm(e);
 });
 
 setTimeout(() => {

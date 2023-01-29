@@ -60,6 +60,7 @@ const populateEditRoomForm = (
 
 const validateEditRoomForm = (values) => {
   let isFormValid = true;
+
   // 1. Check if room is selected
   // check eslint for this
   if (values.selectedRoom === "none") {
@@ -130,6 +131,7 @@ const submitEditRoomForm = (event) => {
   if (formValid) {
     // TODO: Send API request
 
+    console.log("Sending request");
     showSnackbar("Room updated successfully", "success");
 
     closeModal("edit-room-modal");
