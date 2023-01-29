@@ -11,6 +11,7 @@ import {
   submitEditRoomForm,
 } from "./forms/editRoomForm";
 import submitAddRoomForm from "./forms/addRoomForm";
+import { submitOccupyRoomForm } from "./forms/occupyRoomForm";
 
 // Setting up modals
 setupModal("occupy-room-modal");
@@ -166,6 +167,10 @@ document.getElementById("edit-room-form").addEventListener("submit", (e) => {
 
 document.getElementById("add-room-form").addEventListener("submit", (e) => {
   submitAddRoomForm(e);
+});
+
+document.getElementById("occupy-room-form").addEventListener("submit", (e) => {
+  submitOccupyRoomForm(e);
 });
 
 setTimeout(() => {

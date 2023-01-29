@@ -85,6 +85,7 @@
           <div class="modal-content">
             <h4 class="subtitle">Selected room</h4>
             <form id="occupy-room-form">
+              <input type="hidden" id="occupyRoomId" name="occupyRoomId" />
               <div class="textinput">
                 <label for="meetingTitle">Meeting title</label>
                 <input
@@ -92,6 +93,7 @@
                   id="meetingTitle"
                   name="meetingTitle"
                   placeholder="Eg. Daily standup"
+                  data-caption="Will be shown to users"
                 />
                 <p>Will be shown to users</p>
               </div>
@@ -102,6 +104,7 @@
                   id="occupiedUntil"
                   name="occupiedUntil"
                   placeholder="Eg. Select the time"
+                  data-caption="Time till room will be occupied"
                 />
                 <p>Time till room will be occupied</p>
               </div>
@@ -112,6 +115,7 @@
                   id="occupiedComments"
                   name="occupiedComments"
                   placeholder="Words, sentences"
+                  data-caption="Additional info for users"
                 ></textarea>
                 <p>Additional info for users</p>
               </div>
@@ -236,6 +240,7 @@
           <div class="modal-content">
             <h4 class="subtitle">Select a room</h4>
             <form id="edit-room-form">
+              <!-- field is redundant -->
               <input type="hidden" id="editId" name="editId" />
               <div class="dropdown">
                 <label for="selectedRoom">Room list</label>
@@ -332,8 +337,8 @@
         </div>
       </div>
       <div id="snackbar" class="snackbar snackbar-hidden">
-        <span class="material-symbols-rounded">info</span>
-        <p>Hello, this is snackbar!</p>
+        <span class="material-symbols-rounded"></span>
+        <p></p>
       </div>
     </main>
     <script type="module" src="/js/index.js"></script>

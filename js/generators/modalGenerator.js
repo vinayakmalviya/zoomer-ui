@@ -4,6 +4,7 @@ import {
   iconGenerator,
 } from "./elementGenerator";
 import { closeModal } from "../helpers/modalHandler";
+import { resetOccupyRoomForm } from "../forms/occupyRoomForm";
 
 const populateFreeupRoomModal = (
   id,
@@ -122,6 +123,7 @@ const populateOccupyRoomModal = (
   const roomLimit = document.createElement("p");
   roomLimit.innerHTML = `${timeLimit} mins`;
 
+  // Append elements
   metadataDiv.appendChild(capacityIcon);
   metadataDiv.appendChild(roomCapacity);
   metadataDiv.appendChild(limitIcon);
@@ -131,6 +133,13 @@ const populateOccupyRoomModal = (
   detailsDiv.appendChild(roomIdNode);
   detailsDiv.appendChild(roomLink);
   detailsDiv.appendChild(metadataDiv);
+
+  // Reset occupy room form
+  resetOccupyRoomForm();
+
+  // Add room id from database to a hidden field
+  const idField = document.getElementById("occupyRoomId");
+  idField.value = id;
 
   // Checking for existing div
   const exisitingDetailsDiv = modalContent.querySelector(

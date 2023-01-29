@@ -69,7 +69,7 @@ const submitAddRoomForm = (event) => {
     console.log("Sending request");
     showSnackbar("Room added successfully", "success");
 
-    // closeModal("add-room-modal");
+    closeModal("add-room-modal");
   } else {
     console.log("Form invalid, check inputs");
   }

@@ -128,6 +128,8 @@ const submitEditRoomForm = (event) => {
 
   const formValid = validateEditRoomForm(formValues);
 
+  console.log(formValues);
+
   if (formValid) {
     // TODO: Send API request
 
