@@ -2,8 +2,7 @@ import { setupModal, openModal } from "./helpers/modalHandler";
 import { setupFab } from "./helpers/fabHandler";
 import { finishPageLoading } from "./helpers/loadingHandler";
 
-import generateActiveRoom from "./generators/activeRoomGenerator";
-import generateAvailableRoom from "./generators/availableRoomGenerator";
+import updateHomePage from "./generators/updateHomePage";
 
 import {
   populateEditRoomDropdown,
@@ -97,45 +96,7 @@ if (availableRooms.length === 0) {
 }
 
 // Rendering rooms
-const activeRoomsSection = document.getElementById("active-rooms");
-const activeRoomsFragment = document.createDocumentFragment();
-
-activeRooms.forEach((room) => {
-  const roomOccupancyDetails = occupancies.filter((o) => o.id === room.id)[0];
-
-  activeRoomsFragment.appendChild(
-    generateActiveRoom(
-      room.id,
-      room.name,
-      room.room_id,
-      room.capacity,
-      room.time_limit,
-      room.link,
-      roomOccupancyDetails.occupied_until,
-      roomOccupancyDetails.meetingTitle
-    )
-  );
-});
-
-activeRoomsSection.appendChild(activeRoomsFragment);
-
-const availableRoomsSection = document.getElementById("available-rooms");
-const availableRoomsFragment = document.createDocumentFragment();
-
-availableRooms.forEach((room) => {
-  availableRoomsFragment.appendChild(
-    generateAvailableRoom(
-      room.id,
-      room.name,
-      room.room_id,
-      room.capacity,
-      room.time_limit,
-      room.link
-    )
-  );
-});
-
-availableRoomsSection.appendChild(availableRoomsFragment);
+updateHomePage(activeRooms, availableRooms, occupancies);
 
 // Setting up forms
 // 1. Edit room form
@@ -165,10 +126,12 @@ document.getElementById("edit-room-form").addEventListener("submit", (e) => {
   submitEditRoomForm(e);
 });
 
+// 2. Add room form
 document.getElementById("add-room-form").addEventListener("submit", (e) => {
   submitAddRoomForm(e);
 });
 
+// 3. Occupy room form
 document.getElementById("occupy-room-form").addEventListener("submit", (e) => {
   submitOccupyRoomForm(e);
 });
