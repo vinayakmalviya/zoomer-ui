@@ -13,7 +13,7 @@ import submitAddRoomForm from "./forms/addRoomForm";
 import { submitOccupyRoomForm } from "./forms/occupyRoomForm";
 import showSnackbar from "./helpers/showSnackbar";
 
-const API_URL = "http://localhost:4000";
+import requestAPI from "./helpers/requestAPI";
 
 // Setting up modals
 setupModal("occupy-room-modal");
@@ -59,8 +59,7 @@ let activeRooms = [];
 
 let availableRooms = [];
 
-fetch(`${API_URL}/rooms`)
-  .then((res) => res.json())
+requestAPI("/rooms")
   .then((res) => {
     // Storing data from API
     activeRooms = res.active_rooms;
@@ -115,7 +114,7 @@ fetch(`${API_URL}/rooms`)
       .getElementById("available-empty-placeholder")
       .classList.replace("hidden", "visible");
 
-    showSnackbar(err.message);
+    showSnackbar(err.message, "error");
   })
   .finally(() => {
     finishPageLoading();

@@ -3,6 +3,9 @@ import isValidUrl from "../helpers/validationHelpers";
 import showSnackbar from "../helpers/showSnackbar";
 import { closeModal } from "../helpers/modalHandler";
 
+import { defaultAPIHeaders } from "../constants";
+import requestAPI from "../helpers/requestAPI";
+
 const validateAddRoomForm = (values) => {
   let isFormValid = true;
 
@@ -61,15 +64,28 @@ const submitAddRoomForm = (event) => {
 
   const formValid = validateAddRoomForm(formValues);
 
-  console.log(formValues);
-
   if (formValid) {
-    // TODO: Send API request
+    const payload = {
+      name: formValues.roomName,
+      room_id: formValues.roomId,
+      capacity: formValues.roomCapacity,
+      time_limit: parseInt(formValues.timeLimit, 10),
+      link: formValues.roomLink,
+      comments: formValues.comments,
+    };
 
-    console.log("Sending request");
-    showSnackbar("Room added successfully", "success");
-
-    closeModal("add-room-modal");
+    requestAPI("/rooms/new", {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: defaultAPIHeaders,
+    })
+      .then(() => {
+        showSnackbar("Room added successfully", "success");
+        closeModal("add-room-modal");
+      })
+      .catch((err) => {
+        showSnackbar(err.message, "error");
+      });
   } else {
     console.log("Form invalid, check inputs");
   }
