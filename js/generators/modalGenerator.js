@@ -5,6 +5,8 @@ import {
 } from "./elementGenerator";
 import { closeModal } from "../helpers/modalHandler";
 import { resetOccupyRoomForm } from "../forms/occupyRoomForm";
+import requestAPI from "../helpers/requestAPI";
+import showSnackbar from "../helpers/showSnackbar";
 
 const populateFreeupRoomModal = (
   id,
@@ -66,12 +68,17 @@ const populateFreeupRoomModal = (
     "exit_to_app"
   );
   freeUpRoomButton.addEventListener("click", () => {
-    // TODO: Send API request to freeup room
     console.log("Freeing up room: ", name, id);
 
-    closeModal("freeup-room-modal");
-    modalContent.removeChild(detailsDiv);
-    modalContent.removeChild(actionsDiv);
+    requestAPI(`/rooms/freeup/${id}`)
+      .then(() => {
+        showSnackbar("Room freed up successfully", "success");
+        closeModal("freeup-room-modal");
+
+        modalContent.removeChild(detailsDiv);
+        modalContent.removeChild(actionsDiv);
+      })
+      .catch((err) => showSnackbar(err.message, "error"));
   });
 
   actionsDiv.appendChild(cancelButton);
