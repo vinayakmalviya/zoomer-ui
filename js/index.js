@@ -11,6 +11,9 @@ import {
 } from "./forms/editRoomForm";
 import submitAddRoomForm from "./forms/addRoomForm";
 import { submitOccupyRoomForm } from "./forms/occupyRoomForm";
+import showSnackbar from "./helpers/showSnackbar";
+
+const API_URL = "http://localhost:4000";
 
 // Setting up modals
 setupModal("occupy-room-modal");
@@ -35,93 +38,8 @@ document.getElementById("edit-room-button").addEventListener("click", (e) => {
   openModal(e.target, "edit-room-modal");
 });
 
-// Setting up data store
-const activeRooms = [
-  {
-    id: 1,
-    name: "Vinayak's Zoom Room",
-    room_id: "123 456 7890",
-    capacity: "100",
-    time_limit: "40",
-    link: "https://google.com",
-    password: "why",
-    comments: "None",
-  },
-];
-
-const availableRooms = [
-  {
-    id: 2,
-    name: "Zoom Room 1",
-    room_id: "123 456 7890",
-    capacity: "100",
-    time_limit: "40",
-    link: "https://google.com",
-    password: "why",
-    comments: "None",
-  },
-  {
-    id: 3,
-    name: "Zoom Room 2",
-    room_id: "123 456 7890",
-    capacity: "100",
-    time_limit: "40",
-    link: "https://google.com",
-    password: "why",
-    comments: "None",
-  },
-];
-
-const occupancies = [
-  {
-    id: 1,
-    occupied_until: "12:45PM IST",
-    meetingTitle: "Daily standup call",
-  },
-];
-
-// TODO: Fetch and update store from API
-
-// Checking for empty sections
-if (activeRooms.length === 0) {
-  document
-    .getElementById("active-empty-placeholder")
-    .classList.replace("hidden", "visible");
-}
-
-if (availableRooms.length === 0) {
-  document
-    .getElementById("available-empty-placeholder")
-    .classList.replace("hidden", "visible");
-}
-
-// Rendering rooms
-updateHomePage(activeRooms, availableRooms, occupancies);
-
 // Setting up forms
 // 1. Edit room form
-populateEditRoomDropdown(availableRooms);
-
-document.getElementById("selectedRoom").addEventListener("change", (e) => {
-  const selectedId = e.target.value;
-
-  if (selectedId !== "none") {
-    const selectedRoomDetails = availableRooms.filter(
-      (r) => selectedId === String(r.id)
-    )[0];
-
-    populateEditRoomForm(
-      selectedId,
-      selectedRoomDetails.name,
-      selectedRoomDetails.room_id,
-      selectedRoomDetails.link,
-      selectedRoomDetails.capacity,
-      selectedRoomDetails.time_limit,
-      selectedRoomDetails.comments
-    );
-  }
-});
-
 document.getElementById("edit-room-form").addEventListener("submit", (e) => {
   submitEditRoomForm(e);
 });
@@ -136,6 +54,69 @@ document.getElementById("occupy-room-form").addEventListener("submit", (e) => {
   submitOccupyRoomForm(e);
 });
 
-setTimeout(() => {
-  finishPageLoading();
-}, 2000);
+// Setting up data store
+let activeRooms = [];
+
+let availableRooms = [];
+
+fetch(`${API_URL}/rooms`)
+  .then((res) => res.json())
+  .then((res) => {
+    // Storing data from API
+    activeRooms = res.active_rooms;
+    availableRooms = res.available_rooms;
+
+    // Handle forms that depend on API resp
+    // 1. Edit room form
+    populateEditRoomDropdown(availableRooms);
+
+    document.getElementById("selectedRoom").addEventListener("change", (e) => {
+      const selectedId = e.target.value;
+
+      if (selectedId !== "none") {
+        const selectedRoomDetails = availableRooms.filter(
+          (r) => selectedId === String(r.id)
+        )[0];
+
+        populateEditRoomForm(
+          selectedId,
+          selectedRoomDetails.name,
+          selectedRoomDetails.room_id,
+          selectedRoomDetails.link,
+          selectedRoomDetails.capacity,
+          selectedRoomDetails.time_limit,
+          selectedRoomDetails.comments
+        );
+      }
+    });
+
+    // Checking for empty sections
+    if (activeRooms.length === 0) {
+      document
+        .getElementById("active-empty-placeholder")
+        .classList.replace("hidden", "visible");
+    }
+
+    if (availableRooms.length === 0) {
+      document
+        .getElementById("available-empty-placeholder")
+        .classList.replace("hidden", "visible");
+    }
+
+    // Rendering rooms
+    updateHomePage(activeRooms, availableRooms);
+  })
+  .catch((err) => {
+    document
+      .getElementById("active-empty-placeholder")
+      .classList.replace("hidden", "visible");
+
+    document
+      .getElementById("available-empty-placeholder")
+      .classList.replace("hidden", "visible");
+
+    showSnackbar(err.message);
+  })
+  .finally(() => {
+    finishPageLoading();
+  });

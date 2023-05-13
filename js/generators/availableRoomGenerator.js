@@ -36,8 +36,13 @@ const generateAvailableRoom = (id, name, roomId, capacity, timeLimit, link) => {
 
   const limitIcon = iconGenerator("timer");
 
+  const [hours, minutes, seconds] = timeLimit
+    .split(":")
+    .map((t) => parseInt(t, 10));
+  const calculatedTimeLimit = hours * 60 + minutes + seconds / 60;
+
   const roomLimit = document.createElement("p");
-  roomLimit.innerHTML = `${timeLimit} mins`;
+  roomLimit.innerHTML = `${calculatedTimeLimit} mins`;
 
   // Room status div
   const statusDiv = divGenerator("room-status");

@@ -1,7 +1,7 @@
 import generateActiveRoom from "./activeRoomGenerator";
 import generateAvailableRoom from "./availableRoomGenerator";
 
-const updateHomePage = (activeRooms, availableRooms, occupancies) => {
+const updateHomePage = (activeRooms, availableRooms) => {
   const activeRoomsSection = document.getElementById("active-rooms");
   const availableRoomsSection = document.getElementById("available-rooms");
 
@@ -9,8 +9,6 @@ const updateHomePage = (activeRooms, availableRooms, occupancies) => {
   const activeRoomsFragment = document.createDocumentFragment();
 
   activeRooms.forEach((room) => {
-    const roomOccupancyDetails = occupancies.filter((o) => o.id === room.id)[0];
-
     activeRoomsFragment.appendChild(
       generateActiveRoom(
         room.id,
@@ -19,8 +17,8 @@ const updateHomePage = (activeRooms, availableRooms, occupancies) => {
         room.capacity,
         room.time_limit,
         room.link,
-        roomOccupancyDetails.occupied_until,
-        roomOccupancyDetails.meetingTitle
+        room.occupied_until,
+        room.meeting_title
       )
     );
   });
