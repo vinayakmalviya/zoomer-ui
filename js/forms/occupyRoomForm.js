@@ -1,6 +1,8 @@
 import { displayInputError, resetInput } from "./displayError";
 import showSnackbar from "../helpers/showSnackbar";
 import { closeModal } from "../helpers/modalHandler";
+import requestAPI from "../helpers/requestAPI";
+import { defaultAPIHeaders } from "../constants";
 
 const validateOccupyRoomForm = (values) => {
   let isFormValid = true;
@@ -32,15 +34,33 @@ const submitOccupyRoomForm = (event) => {
 
   const formValid = validateOccupyRoomForm(formValues);
 
-  console.log(formValues);
-
   if (formValid) {
-    // TODO: Send API request
+    const [hours, minutes] = formValues.occupiedUntil.split(":");
 
-    console.log("Sending request");
-    showSnackbar("Room occupied successfully", "success");
+    const occupiedUntil = new Date();
+    occupiedUntil.setHours(parseInt(hours, 10));
+    occupiedUntil.setMinutes(parseInt(minutes, 10));
 
-    closeModal("occupy-room-modal");
+    const payload = {
+      occupied_room_id: formValues.occupyRoomId,
+      occupied_until: occupiedUntil,
+      meeting_title: formValues.meetingTitle,
+      comments: formValues.occupiedComments,
+    };
+
+    requestAPI("/rooms/occupy", {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: defaultAPIHeaders,
+    })
+      .then(() => {
+        showSnackbar("Room occupied successfully", "success");
+
+        closeModal("occupy-room-modal");
+      })
+      .catch((err) => {
+        showSnackbar(err.message, "error");
+      });
   } else {
     console.log("Form invalid, check inputs");
   }

@@ -57,8 +57,9 @@ const generateActiveRoom = (
   const status = document.createElement("p");
   status.innerHTML = "Occupied until:";
 
+  const occupiedUntilString = new Date(occupiedUntil).toLocaleString();
   const occupiedUntilNode = document.createElement("h4");
-  occupiedUntilNode.innerHTML = occupiedUntil;
+  occupiedUntilNode.innerHTML = occupiedUntilString;
 
   // Room actions div
   const actionsDiv = divGenerator("room-actions");

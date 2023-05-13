@@ -1,6 +1,7 @@
 import { setupModal, openModal } from "./helpers/modalHandler";
 import { setupFab } from "./helpers/fabHandler";
 import { finishPageLoading } from "./helpers/loadingHandler";
+import requestAPI from "./helpers/requestAPI";
 
 import updateHomePage from "./generators/updateHomePage";
 
@@ -12,8 +13,6 @@ import {
 import submitAddRoomForm from "./forms/addRoomForm";
 import { submitOccupyRoomForm } from "./forms/occupyRoomForm";
 import showSnackbar from "./helpers/showSnackbar";
-
-import requestAPI from "./helpers/requestAPI";
 
 // Setting up modals
 setupModal("occupy-room-modal");
