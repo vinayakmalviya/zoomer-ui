@@ -2,6 +2,8 @@ import { displayInputError, resetInput } from "./displayError";
 import isValidUrl from "../helpers/validationHelpers";
 import showSnackbar from "../helpers/showSnackbar";
 import { closeModal } from "../helpers/modalHandler";
+import requestAPI from "../helpers/requestAPI";
+import { defaultAPIHeaders } from "../constants";
 
 const populateEditRoomDropdown = (rooms = []) => {
   const editRoomForm = document.getElementById("edit-room-form");
@@ -49,12 +51,17 @@ const populateEditRoomForm = (
   const roomTimeLimitField = document.getElementById("editTimeLimit");
   const roomCommentsField = document.getElementById("editComments");
 
+  const [hours, minutes, seconds] = limit
+    .split(":")
+    .map((t) => parseInt(t, 10));
+  const calculatedTimeLimit = hours * 60 + minutes + seconds / 60;
+
   idField.value = id;
   roomNameField.value = name;
   roomIdField.value = roomId;
   roomLinkField.value = link;
   roomCapacityField.value = capacity;
-  roomTimeLimitField.value = limit;
+  roomTimeLimitField.value = calculatedTimeLimit;
   roomCommentsField.value = comments;
 };
 
@@ -131,12 +138,29 @@ const submitEditRoomForm = (event) => {
   console.log(formValues);
 
   if (formValid) {
-    // TODO: Send API request
+    const payload = {
+      name: formValues.editRoomName,
+      room_id: formValues.editRoomId,
+      capacity: parseInt(formValues.editRoomCapacity, 10),
+      time_limit: parseInt(formValues.editTimeLimit, 10),
+      link: formValues.editRoomLink,
+      comments: formValues.editComments,
+    };
 
-    console.log("Sending request");
-    showSnackbar("Room updated successfully", "success");
+    console.log(payload);
 
-    closeModal("edit-room-modal");
+    requestAPI(`/rooms/edit/${formValues.editId}`, {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: defaultAPIHeaders,
+    })
+      .then(() => {
+        showSnackbar("Room updated successfully", "success");
+        closeModal("edit-room-modal");
+      })
+      .catch((err) => {
+        showSnackbar(err.message, "error");
+      });
   } else {
     console.log("Form invalid, check inputs");
   }

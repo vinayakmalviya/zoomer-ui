@@ -45,7 +45,9 @@ const generateActiveRoom = (
 
   const limitIcon = iconGenerator("timer");
 
-  const [hours, minutes, seconds] = timeLimit.split(":");
+  const [hours, minutes, seconds] = timeLimit
+    .split(":")
+    .map((t) => parseInt(t, 10));
   const calculatedTimeLimit = hours * 60 + minutes + seconds / 60;
 
   const roomLimit = document.createElement("p");

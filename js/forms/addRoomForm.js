@@ -69,7 +69,7 @@ const submitAddRoomForm = (event) => {
     const payload = {
       name: formValues.roomName,
       room_id: formValues.roomId,
-      capacity: formValues.roomCapacity,
+      capacity: parseInt(formValues.roomCapacity, 10),
       time_limit: parseInt(formValues.timeLimit, 10),
       link: formValues.roomLink,
       comments: formValues.comments,
