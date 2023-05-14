@@ -138,8 +138,6 @@ const submitEditRoomForm = (event) => {
 
   const formValid = validateEditRoomForm(formValues);
 
-  console.log(formValues);
-
   if (formValid) {
     const payload = {
       name: formValues.editRoomName,
@@ -149,8 +147,6 @@ const submitEditRoomForm = (event) => {
       link: formValues.editRoomLink,
       comments: formValues.editComments,
     };
-
-    console.log(payload);
 
     requestAPI(`/rooms/edit/${formValues.editId}`, {
       method: "POST",
@@ -167,8 +163,6 @@ const submitEditRoomForm = (event) => {
       .catch((err) => {
         showSnackbar(err.message, "error");
       });
-  } else {
-    console.log("Form invalid, check inputs");
   }
 };
 

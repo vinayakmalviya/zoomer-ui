@@ -69,8 +69,6 @@ const populateFreeupRoomModal = (
     "exit_to_app"
   );
   freeUpRoomButton.addEventListener("click", () => {
-    console.log("Freeing up room: ", name, id);
-
     requestAPI(`/rooms/freeup/${id}`)
       .then(() => {
         showSnackbar("Room freed up successfully", "success");

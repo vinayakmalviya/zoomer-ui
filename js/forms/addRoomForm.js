@@ -91,8 +91,6 @@ const submitAddRoomForm = (event) => {
       .catch((err) => {
         showSnackbar(err.message, "error");
       });
-  } else {
-    console.log("Form invalid, check inputs");
   }
 };
 
