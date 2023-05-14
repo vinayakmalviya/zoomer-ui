@@ -7,6 +7,7 @@ import { closeModal } from "../helpers/modalHandler";
 import { resetOccupyRoomForm } from "../forms/occupyRoomForm";
 import requestAPI from "../helpers/requestAPI";
 import showSnackbar from "../helpers/showSnackbar";
+import updateHomePage from "./updateHomePage";
 
 const populateFreeupRoomModal = (
   id,
@@ -73,6 +74,9 @@ const populateFreeupRoomModal = (
     requestAPI(`/rooms/freeup/${id}`)
       .then(() => {
         showSnackbar("Room freed up successfully", "success");
+
+        updateHomePage();
+
         closeModal("freeup-room-modal");
 
         modalContent.removeChild(detailsDiv);

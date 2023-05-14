@@ -16,5 +16,6 @@ module.exports = {
     "no-param-reassign": ["error", { props: false }],
     "no-promise-executor-return": "off",
     "prefer-promise-reject-errors": "off",
+    "import/no-cycle": "off",
   },
 };

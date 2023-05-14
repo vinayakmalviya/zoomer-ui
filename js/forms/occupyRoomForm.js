@@ -3,6 +3,7 @@ import showSnackbar from "../helpers/showSnackbar";
 import { closeModal } from "../helpers/modalHandler";
 import requestAPI from "../helpers/requestAPI";
 import { defaultAPIHeaders } from "../constants";
+import updateHomePage from "../generators/updateHomePage";
 
 const validateOccupyRoomForm = (values) => {
   let isFormValid = true;
@@ -55,6 +56,8 @@ const submitOccupyRoomForm = (event) => {
     })
       .then(() => {
         showSnackbar("Room occupied successfully", "success");
+
+        updateHomePage();
 
         closeModal("occupy-room-modal");
       })

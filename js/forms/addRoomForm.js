@@ -6,6 +6,7 @@ import { closeModal } from "../helpers/modalHandler";
 import requestAPI from "../helpers/requestAPI";
 
 import { defaultAPIHeaders } from "../constants";
+import updateHomePage from "../generators/updateHomePage";
 
 const validateAddRoomForm = (values) => {
   let isFormValid = true;
@@ -82,6 +83,9 @@ const submitAddRoomForm = (event) => {
     })
       .then(() => {
         showSnackbar("Room added successfully", "success");
+
+        updateHomePage();
+
         closeModal("add-room-modal");
       })
       .catch((err) => {

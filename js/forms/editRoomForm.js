@@ -3,6 +3,9 @@ import isValidUrl from "../helpers/validationHelpers";
 import showSnackbar from "../helpers/showSnackbar";
 import { closeModal } from "../helpers/modalHandler";
 import requestAPI from "../helpers/requestAPI";
+
+import updateHomePage from "../generators/updateHomePage";
+
 import { defaultAPIHeaders } from "../constants";
 
 const populateEditRoomDropdown = (rooms = []) => {
@@ -156,6 +159,9 @@ const submitEditRoomForm = (event) => {
     })
       .then(() => {
         showSnackbar("Room updated successfully", "success");
+
+        updateHomePage();
+
         closeModal("edit-room-modal");
       })
       .catch((err) => {
