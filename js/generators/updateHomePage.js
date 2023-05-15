@@ -56,12 +56,20 @@ const updateHomePage = async () => {
         document
           .getElementById("active-empty-placeholder")
           .classList.replace("hidden", "visible");
+      } else {
+        document
+          .getElementById("active-empty-placeholder")
+          .classList.replace("visible", "hidden");
       }
 
       if (availableRooms.length === 0) {
         document
           .getElementById("available-empty-placeholder")
           .classList.replace("hidden", "visible");
+      } else {
+        document
+          .getElementById("available-empty-placeholder")
+          .classList.replace("visible", "hidden");
       }
 
       // Rendering rooms
