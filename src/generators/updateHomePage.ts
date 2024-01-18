@@ -9,12 +9,12 @@ import generateActiveRoom from "./activeRoomGenerator";
 import generateAvailableRoom from "./availableRoomGenerator";
 
 const updateHomePage = async () => {
-  const activeRoomsSection = document.getElementById("active-rooms");
-  const availableRoomsSection = document.getElementById("available-rooms");
+  const activeRoomsSection = document.getElementById("active-rooms")!;
+  const availableRoomsSection = document.getElementById("available-rooms")!;
 
   // Storing rooms
-  let availableRooms = [];
-  let activeRooms = [];
+  let availableRooms: AvailableRoom[] = [];
+  let activeRooms: ActiveRoom[] = [];
 
   // Generating active rooms
   const activeRoomsFragment = document.createDocumentFragment();
@@ -30,9 +30,9 @@ const updateHomePage = async () => {
       populateEditRoomDropdown(availableRooms);
 
       document
-        .getElementById("selectedRoom")
+        .querySelector<HTMLSelectElement>("#selectedRoom")!
         .addEventListener("change", (e) => {
-          const selectedId = e.target.value;
+          const selectedId = (e.target as HTMLSelectElement).value;
 
           if (selectedId !== "none") {
             const selectedRoomDetails = availableRooms.filter(
@@ -54,21 +54,21 @@ const updateHomePage = async () => {
       // Checking for empty sections
       if (activeRooms.length === 0) {
         document
-          .getElementById("active-empty-placeholder")
+          .getElementById("active-empty-placeholder")!
           .classList.replace("hidden", "visible");
       } else {
         document
-          .getElementById("active-empty-placeholder")
+          .getElementById("active-empty-placeholder")!
           .classList.replace("visible", "hidden");
       }
 
       if (availableRooms.length === 0) {
         document
-          .getElementById("available-empty-placeholder")
+          .getElementById("available-empty-placeholder")!
           .classList.replace("hidden", "visible");
       } else {
         document
-          .getElementById("available-empty-placeholder")
+          .getElementById("available-empty-placeholder")!
           .classList.replace("visible", "hidden");
       }
 
@@ -109,11 +109,11 @@ const updateHomePage = async () => {
     })
     .catch((err) => {
       document
-        .getElementById("active-empty-placeholder")
+        .getElementById("active-empty-placeholder")!
         .classList.replace("hidden", "visible");
 
       document
-        .getElementById("available-empty-placeholder")
+        .getElementById("available-empty-placeholder")!
         .classList.replace("hidden", "visible");
 
       showSnackbar(err.message, "error");

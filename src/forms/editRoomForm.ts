@@ -8,9 +8,10 @@ import updateHomePage from "../generators/updateHomePage";
 
 import { defaultAPIHeaders } from "../constants";
 
-const populateEditRoomDropdown = (rooms = []) => {
-  const editRoomForm = document.getElementById("edit-room-form");
-  const selectRoomDropdown = editRoomForm.querySelector("#selectedRoom");
+const populateEditRoomDropdown = (rooms: AvailableRoom[] = []) => {
+  const editRoomForm = document.getElementById("edit-room-form")!;
+  const selectRoomDropdown =
+    editRoomForm.querySelector<HTMLFormElement>("#selectedRoom")!;
 
   const optionsFragment = document.createDocumentFragment();
 
@@ -38,21 +39,26 @@ const populateEditRoomDropdown = (rooms = []) => {
 };
 
 const populateEditRoomForm = (
-  id,
-  name,
-  roomId,
-  link,
-  capacity,
-  limit,
-  comments
+  id: string,
+  name: string,
+  roomId: string,
+  link: string,
+  capacity: string,
+  limit: string,
+  comments: string
 ) => {
-  const idField = document.getElementById("editId");
-  const roomNameField = document.getElementById("editRoomName");
-  const roomIdField = document.getElementById("editRoomId");
-  const roomLinkField = document.getElementById("editRoomLink");
-  const roomCapacityField = document.getElementById("editRoomCapacity");
-  const roomTimeLimitField = document.getElementById("editTimeLimit");
-  const roomCommentsField = document.getElementById("editComments");
+  const idField = document.querySelector<HTMLInputElement>("#editId")!;
+  const roomNameField =
+    document.querySelector<HTMLInputElement>("#editRoomName")!;
+  const roomIdField = document.querySelector<HTMLInputElement>("#editRoomId")!;
+  const roomLinkField =
+    document.querySelector<HTMLInputElement>("#editRoomLink")!;
+  const roomCapacityField =
+    document.querySelector<HTMLInputElement>("#editRoomCapacity")!;
+  const roomTimeLimitField =
+    document.querySelector<HTMLInputElement>("#editTimeLimit")!;
+  const roomCommentsField =
+    document.querySelector<HTMLInputElement>("#editComments")!;
 
   const [hours, minutes, seconds] = limit
     .split(":")
@@ -64,11 +70,11 @@ const populateEditRoomForm = (
   roomIdField.value = roomId;
   roomLinkField.value = link;
   roomCapacityField.value = capacity;
-  roomTimeLimitField.value = calculatedTimeLimit;
+  roomTimeLimitField.value = String(calculatedTimeLimit);
   roomCommentsField.value = comments;
 };
 
-const validateEditRoomForm = (values) => {
+const validateEditRoomForm = (values: ValidationInput) => {
   let isFormValid = true;
 
   // 1. Check if room is selected
@@ -105,7 +111,7 @@ const validateEditRoomForm = (values) => {
     displayInputError("editRoomLink", "Please enter a valid link");
   }
 
-  if (!isValidUrl(values.editRoomLink)) {
+  if (!isValidUrl(values.editRoomLink as string)) {
     isFormValid = false;
     displayInputError("editRoomLink", "Please enter a valid link");
   }
@@ -119,11 +125,11 @@ const validateEditRoomForm = (values) => {
   return isFormValid;
 };
 
-const submitEditRoomForm = (event) => {
+const submitEditRoomForm = (event: SubmitEvent) => {
   event.preventDefault();
 
-  const formData = new FormData(event.target);
-  const formValues = Object.fromEntries(formData.entries());
+  const formData = new FormData(event.target as HTMLFormElement);
+  const formValues = Object.fromEntries([...formData]);
 
   [
     "selectedRoom",
@@ -142,8 +148,8 @@ const submitEditRoomForm = (event) => {
     const payload = {
       name: formValues.editRoomName,
       room_id: formValues.editRoomId,
-      capacity: parseInt(formValues.editRoomCapacity, 10),
-      time_limit: parseInt(formValues.editTimeLimit, 10),
+      capacity: parseInt(formValues.editRoomCapacity as string, 10),
+      time_limit: parseInt(formValues.editTimeLimit as string, 10),
       link: formValues.editRoomLink,
       comments: formValues.editComments,
     };

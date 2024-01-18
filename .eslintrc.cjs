@@ -3,12 +3,13 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  plugins: ["prettier"],
-  extends: ["airbnb-base", "prettier"],
+  plugins: ["@typescript-eslint", "prettier"],
+  extends: ["airbnb-base", "airbnb-typescript/base", "prettier"],
   overrides: [],
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
+    project: "./tsconfig.json",
   },
   rules: {
     "prettier/prettier": "error",

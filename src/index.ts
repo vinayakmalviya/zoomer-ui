@@ -17,33 +17,33 @@ setupModal("edit-room-modal");
 // Setting up fab
 setupFab("main-fab");
 
-document.getElementById("add-room-button").addEventListener("click", (e) => {
+document.getElementById("add-room-button")!.addEventListener("click", (e) => {
   // Clear form before opening modal
-  document.getElementById("add-room-form").reset();
+  (document.getElementById("add-room-form") as HTMLFormElement).reset();
 
   openModal(e.target, "add-room-modal");
 });
 
-document.getElementById("edit-room-button").addEventListener("click", (e) => {
+document.getElementById("edit-room-button")!.addEventListener("click", (e) => {
   // Clear form before opening modal
-  document.getElementById("edit-room-form").reset();
+  (document.getElementById("edit-room-form") as HTMLFormElement).reset();
 
   openModal(e.target, "edit-room-modal");
 });
 
 // Setting up forms
 // 1. Edit room form
-document.getElementById("edit-room-form").addEventListener("submit", (e) => {
+document.getElementById("edit-room-form")!.addEventListener("submit", (e) => {
   submitEditRoomForm(e);
 });
 
 // 2. Add room form
-document.getElementById("add-room-form").addEventListener("submit", (e) => {
+document.getElementById("add-room-form")!.addEventListener("submit", (e) => {
   submitAddRoomForm(e);
 });
 
 // 3. Occupy room form
-document.getElementById("occupy-room-form").addEventListener("submit", (e) => {
+document.getElementById("occupy-room-form")!.addEventListener("submit", (e) => {
   submitOccupyRoomForm(e);
 });
 

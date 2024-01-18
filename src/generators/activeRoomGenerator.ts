@@ -7,14 +7,14 @@ import { populateFreeupRoomModal } from "./modalGenerator";
 import { openModal } from "../helpers/modalHandler";
 
 const generateActiveRoom = (
-  id,
-  name,
-  roomId,
-  capacity,
-  timeLimit,
-  link,
-  occupiedUntil,
-  meetingTitle
+  id: string,
+  name: string,
+  roomId: string,
+  capacity: string,
+  timeLimit: string,
+  link: string,
+  occupiedUntil: string,
+  meetingTitle: string
 ) => {
   const parentDiv = divGenerator("room", "active-room");
 

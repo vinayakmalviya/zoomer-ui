@@ -1,8 +1,18 @@
 import { API_URL } from "../constants";
 
-const parseJSON = (response) =>
-  new Promise((resolve) =>
-    response.json().then((json) =>
+interface ParsedResp {
+  status: number;
+  ok: boolean;
+  [k: string]: any;
+}
+
+interface APIResponse {
+  [k: string]: any;
+}
+
+const parseJSON = (response: Response) =>
+  new Promise<ParsedResp>((resolve) =>
+    response.json().then((json: any) =>
       resolve({
         status: response.status,
         ok: response.ok,
@@ -11,8 +21,8 @@ const parseJSON = (response) =>
     )
   );
 
-const requestAPI = (route, options = {}) =>
-  new Promise((resolve, reject) => {
+const requestAPI = (route: string, options = {}) =>
+  new Promise<APIResponse>((resolve, reject) => {
     fetch(`${API_URL}${route}`, options)
       .then(parseJSON)
       .then((response) => {

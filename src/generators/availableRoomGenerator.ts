@@ -6,7 +6,14 @@ import {
 import { populateOccupyRoomModal } from "./modalGenerator";
 import { openModal } from "../helpers/modalHandler";
 
-const generateAvailableRoom = (id, name, roomId, capacity, timeLimit, link) => {
+const generateAvailableRoom = (
+  id: string,
+  name: string,
+  roomId: string,
+  capacity: string,
+  timeLimit: string,
+  link: string
+) => {
   const parentDiv = divGenerator("room");
 
   // Room details

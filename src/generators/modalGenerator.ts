@@ -10,14 +10,14 @@ import showSnackbar from "../helpers/showSnackbar";
 import updateHomePage from "./updateHomePage";
 
 const populateFreeupRoomModal = (
-  id,
-  name,
-  roomId,
-  occupiedUntil,
-  meetingTitle
+  id: string,
+  name: string,
+  roomId: string,
+  occupiedUntil: string,
+  meetingTitle: string
 ) => {
-  const freeUpRoomModal = document.getElementById("freeup-room-modal");
-  const modalContent = freeUpRoomModal.querySelector(".modal-content");
+  const freeUpRoomModal = document.getElementById("freeup-room-modal")!;
+  const modalContent = freeUpRoomModal.querySelector(".modal-content")!;
 
   // Removing existing divs if any
   const exisitingDetailsDiv = modalContent.querySelector(
@@ -96,15 +96,15 @@ const populateFreeupRoomModal = (
 };
 
 const populateOccupyRoomModal = (
-  id,
-  name,
-  roomId,
-  link,
-  capacity,
-  timeLimit
+  id: string,
+  name: string,
+  roomId: string,
+  link: string,
+  capacity: string,
+  timeLimit: string
 ) => {
-  const occupyRoomModal = document.getElementById("occupy-room-modal");
-  const modalContent = occupyRoomModal.querySelector(".modal-content");
+  const occupyRoomModal = document.getElementById("occupy-room-modal")!;
+  const modalContent = occupyRoomModal.querySelector(".modal-content")!;
 
   const detailsDiv = divGenerator("occupying-room-details");
 
@@ -147,7 +147,7 @@ const populateOccupyRoomModal = (
   resetOccupyRoomForm();
 
   // Add room id from database to a hidden field
-  const idField = document.getElementById("occupyRoomId");
+  const idField = document.querySelector<HTMLInputElement>("#occupyRoomId")!;
   idField.value = id;
 
   // Checking for existing div

@@ -1,4 +1,4 @@
-const iconGenerator = (icon) => {
+const iconGenerator = (icon: string) => {
   const element = document.createElement("span");
 
   element.classList.add("material-symbols-rounded");
@@ -8,7 +8,7 @@ const iconGenerator = (icon) => {
   return element;
 };
 
-const divGenerator = (...classes) => {
+const divGenerator = (...classes: string[]) => {
   const element = document.createElement("div");
 
   element.classList.add(...classes);
@@ -16,7 +16,11 @@ const divGenerator = (...classes) => {
   return element;
 };
 
-const buttonGenerator = (text, type = null, icon = null) => {
+const buttonGenerator = (
+  text: string,
+  type: string | null = null,
+  icon: string | null = null
+) => {
   const buttonElement = document.createElement("button");
 
   buttonElement.innerHTML = text;

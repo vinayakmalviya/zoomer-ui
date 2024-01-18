@@ -8,7 +8,7 @@ import requestAPI from "../helpers/requestAPI";
 import { defaultAPIHeaders } from "../constants";
 import updateHomePage from "../generators/updateHomePage";
 
-const validateAddRoomForm = (values) => {
+const validateAddRoomForm = (values: ValidationInput) => {
   let isFormValid = true;
 
   // 1. Room name
@@ -38,7 +38,7 @@ const validateAddRoomForm = (values) => {
     displayInputError("roomLink", "Please enter a valid link");
   }
 
-  if (!isValidUrl(values.roomLink)) {
+  if (!isValidUrl(values.roomLink as string)) {
     isFormValid = false;
     displayInputError("roomLink", "Please enter a valid link");
   }
@@ -52,10 +52,10 @@ const validateAddRoomForm = (values) => {
   return isFormValid;
 };
 
-const submitAddRoomForm = (event) => {
+const submitAddRoomForm = (event: SubmitEvent) => {
   event.preventDefault();
 
-  const formData = new FormData(event.target);
+  const formData = new FormData(event.target as HTMLFormElement);
   const formValues = Object.fromEntries(formData.entries());
 
   ["roomName", "roomId", "roomCapacity", "roomLink", "timeLimit"].forEach(
@@ -70,8 +70,8 @@ const submitAddRoomForm = (event) => {
     const payload = {
       name: formValues.roomName,
       room_id: formValues.roomId,
-      capacity: parseInt(formValues.roomCapacity, 10),
-      time_limit: parseInt(formValues.timeLimit, 10),
+      capacity: parseInt(formValues.roomCapacity as string, 10),
+      time_limit: parseInt(formValues.timeLimit as string, 10),
       link: formValues.roomLink,
       comments: formValues.comments,
     };

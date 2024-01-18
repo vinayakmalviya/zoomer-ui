@@ -1,7 +1,7 @@
-const showSnackbar = (message, type = "info") => {
-  const snackbar = document.getElementById("snackbar");
-  const messageElement = snackbar.querySelector("p");
-  const icon = snackbar.querySelector("span.material-symbols-rounded");
+const showSnackbar = (message: string, type = "info") => {
+  const snackbar = document.getElementById("snackbar")!;
+  const messageElement = snackbar.querySelector("p")!;
+  const icon = snackbar.querySelector("span.material-symbols-rounded")!;
 
   messageElement.innerHTML = message;
 

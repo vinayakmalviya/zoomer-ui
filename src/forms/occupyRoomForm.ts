@@ -5,7 +5,7 @@ import requestAPI from "../helpers/requestAPI";
 import { defaultAPIHeaders } from "../constants";
 import updateHomePage from "../generators/updateHomePage";
 
-const validateOccupyRoomForm = (values) => {
+const validateOccupyRoomForm = (values: ValidationInput) => {
   let isFormValid = true;
 
   // 1. Meeting title
@@ -23,10 +23,10 @@ const validateOccupyRoomForm = (values) => {
   return isFormValid;
 };
 
-const submitOccupyRoomForm = (event) => {
+const submitOccupyRoomForm = (event: SubmitEvent) => {
   event.preventDefault();
 
-  const formData = new FormData(event.target);
+  const formData = new FormData(event.target as HTMLFormElement);
   const formValues = Object.fromEntries(formData.entries());
 
   ["meetingTitle", "occupiedUntil"].forEach((v) => {
@@ -36,7 +36,7 @@ const submitOccupyRoomForm = (event) => {
   const formValid = validateOccupyRoomForm(formValues);
 
   if (formValid) {
-    const [hours, minutes] = formValues.occupiedUntil.split(":");
+    const [hours, minutes] = (formValues.occupiedUntil as string).split(":");
 
     const occupiedUntil = new Date();
     occupiedUntil.setHours(parseInt(hours, 10));
@@ -68,7 +68,8 @@ const submitOccupyRoomForm = (event) => {
 };
 
 const resetOccupyRoomForm = () => {
-  const formElement = document.getElementById("occupy-room-form");
+  const formElement =
+    document.querySelector<HTMLFormElement>("#occupy-room-form")!;
 
   // Reset errors
   ["meetingTitle", "occupiedUntil"].forEach((v) => {
